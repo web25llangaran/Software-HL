@@ -224,11 +224,6 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab fx:id="id_tab_erabiltzailea" text="Erabiltzailea">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
                   <Tab fx:id="id_tab_makinaErabiltzailea" text="Makina - Erabiltzailea">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />

@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -29,6 +28,11 @@ import programa.model.makina;
 
 public class MaltunaBrandController {
 
+
+
+//********************************************************************************************************************  
+//                                                     MAKINA  
+//********************************************************************************************************************
     @FXML
     private TextArea id_aldatuDeskribapenaMakina;
 
@@ -123,24 +127,6 @@ public class MaltunaBrandController {
 
     @FXML
     private TabPane id_tabPane_elementuak;
-
-    @FXML
-    private Tab id_tab_erabiltzailea;
-
-    @FXML
-    private Tab id_tab_makina;
-
-    @FXML
-    private Tab id_tab_makinaErabiltzailea;
-
-    @FXML
-    private Tab id_tab_pieza;
-
-    @FXML
-    private Tab id_tab_piezaMota;
-
-    @FXML
-    private Tab id_tab_txirbildb;
 
     @FXML
     private Label id_label_makinaZerrenda;
@@ -752,3 +738,6 @@ public class MaltunaBrandController {
         return makinak;
     }
 }
+//********************************************************************************************************************  
+//                                                     ERABILTZAILEA  
+//********************************************************************************************************************
