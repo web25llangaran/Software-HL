@@ -764,22 +764,25 @@ public class MaltunaBrandController {
     private DatePicker id_kenduAltaDataErabiltzailea;
     @FXML
     private Button id_kenduErabiltzailea;
-
     @FXML
     private TitledPane id_erabiltzaileaAldatuPantaila;
-     @FXML
+    @FXML
+    private TitledPane id_erabiltzaileaGehituPantaila;
+    @FXML
+    private TitledPane id_erabiltzaileaKenduPantaila;
+    @FXML
     private TextField id_aldatuIDErabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuIzenaErabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuAbizena1Erabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuNANErabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuHelbideaErabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuPostaKodeaErabiltzailea;
-     @FXML
+    @FXML
     private TextField id_aldatuEmailaErabiltzailea;
     @FXML
     private DatePicker id_aldatuJaiotzeDataErabiltzailea;
@@ -797,20 +800,6 @@ public class MaltunaBrandController {
     private AnchorPane id_erabiltzaileaInfoPantaila;
     @FXML
     private Label id_label_erabiltzaileaZerrenda;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @FXML
     void gehituErabiltzaileaPantaila(ActionEvent event) {
@@ -834,6 +823,292 @@ public class MaltunaBrandController {
     void zerrendatuErabiltzaileakPantaila(ActionEvent event) {
     }
     
+
+
+
+
+//********************************************************************************************************************  
+//                                                     PIEZA  
+//********************************************************************************************************************
     
+    @FXML
+    private VBox id_ezkerMenua_pieza;
+    @FXML
+    private Button id_button_gehituPieza;
+    @FXML
+    private Button id_button_kenduPieza;
+    @FXML
+    private Button id_button_aldatuPieza;
+    @FXML
+    private Button id_button_zerrendatuPieza;
+    @FXML
+    private ImageView id_imagePieza;
+    @FXML
+    private TextField id_sartuIDPiezaMotaPieza;
+    @FXML
+    private TextField id_sartuIDMakinaPieza;
+    @FXML
+    private TextField id_sartuIzenaPieza;
+    @FXML
+    private TextField id_sartuIDPieza;
+    @FXML
+    private TextField id_sartuPisuaPieza;
+    @FXML
+    private TextArea id_sartuDeskribapenaPieza;
+    @FXML
+    private TextField id_sartuPrezioaPieza;
+    @FXML
+    private TextField id_sartuStockPieza;
+    @FXML
+    private Button id_gehituPieza;
+    @FXML
+    private TitledPane id_piezaGehituPantaila;   
+    @FXML
+    private TextField id_kenduIDPieza;
+    @FXML
+    private TextField id_kenduIDPiezaMotaPieza;
+    @FXML
+    private TextField id_kenduIDMakinaPieza;
+    @FXML
+    private TextField id_kenduIzenaPieza;
+    @FXML
+    private TextArea id_kenduDeskribapenaPieza;
+    @FXML
+    private TextField id_kendPisuaPieza;
+    @FXML
+    private TextField id_kenduPrezioaPieza;
+    @FXML
+    private TextField id_kenduStockPieza;
+    @FXML
+    private Button id_kenduPieza;
+    @FXML
+    private TitledPane id_piezaKenduPantaila;    
+    @FXML
+    private TextField id_aldatuIDPieza;
+    @FXML
+    private TextField id_aldatuIDPiezaMotaPieza;
+    @FXML
+    private TextField id_aldatuIDMakinaPieza;
+    @FXML
+    private TextField id_aldatuIzenaPieza;
+    @FXML
+    private TextArea id_aldatuDeskribapenaPieza;
+    @FXML
+    private TextField id_aldatuPisuaPieza;
+    @FXML
+    private TextField id_aldatuPrezioaPieza;
+    @FXML
+    private TextField id_aldatuStockPieza;
+    @FXML
+    private Button id_aldatuPieza;
+    @FXML
+    private TitledPane id_PiezaAldatuPantaila;
+     @FXML
+    private TitledPane id_PiezaZerrendatuPantaila;
+    @FXML
+    private ListView<makina> id_piezaZerrenda;
+    @FXML
+    private ListView<makina> id_piezaZerrenda1;
+    @FXML
+    private AnchorPane id_piezaInfoPantaila;
+    @FXML
+    private Label id_label_piezaZerrenda;
+
+    @FXML
+    void gehituPiezaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void gehituPieza(ActionEvent event) {
+    }
+    @FXML
+    void kenduPiezaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void kenduPieza(ActionEvent event) {
+    }
+    @FXML
+    void aldatuPiezaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void aldatuPieza(ActionEvent event) {
+    }
+    @FXML
+    void zerrendatuPiezakPantaila(ActionEvent event) {
+    }
+    
+
+
+//********************************************************************************************************************  
+//                                                    MAKINA - ERABILTZAILEA  
+//********************************************************************************************************************
+
+
+    @FXML
+    private Button id_button_aldatuMakinaErabiltzailea;
+    @FXML
+    private Button id_button_gehituMakinaErabiltzailea;
+    @FXML
+    private Button id_button_kenduMakinaErabiltzailea;
+    @FXML
+    private Button id_button_zerrendatuMakinaErabiltzailea;
+    @FXML
+    private VBox id_ezkerMenua_makinaErabiltzailea;
+    @FXML
+    private ImageView id_imageMakinaErabiltzailea;
+    @FXML
+    private TextField id_sartuIDMakina1;
+    @FXML
+    private TextField id_sartuIDErabiltzailea1;
+    @FXML
+    private DatePicker id_sartuHasieraDataMakinaErabiltzailea;
+    @FXML
+    private DatePicker id_sartuAmaieraDataMakinaErabiltzailea;    
+    @FXML
+    private Button id_gehituMakinaErabiltzailea;
+    @FXML
+    private TitledPane id_makinaErabiltzaileaGehituPantaila;   
+    @FXML
+    private TextField id_kenduIDErabiltzailea1;
+    @FXML
+    private TextField id_kenduIDMakina1;    
+    @FXML
+    private DatePicker id_kenduHasieraDataMakinaErabiltzailea;
+    @FXML
+    private DatePicker id_kenduAmaieraDataMakinaErabiltzailea;
+    @FXML
+    private Button id_kenduMakinaErabiltzailea;
+    @FXML
+    private TitledPane id_makinaErabiltzaileaAldatuPantaila;
+    @FXML
+    private TitledPane id_makinaErabiltzaileaKenduPantaila;
+    @FXML
+    private TextField id_aldatuIDErabiltzailea1;
+    @FXML
+    private TextField id_aldatuIDMakina1;
+    @FXML
+    private DatePicker id_aldatuHasieraDataMakinaErabiltzailea;
+    @FXML
+    private DatePicker id_aldatuAmaieraDataMakinaErabiltzailea;
+    @FXML
+    private Button id_aldatuMakinaErabiltzailea;
+    @FXML
+    private TitledPane id_makinaErabiltzaileaZerrendatuPantaila;
+    @FXML
+    private ListView<makina> id_makinaErabiltzaileaZerrenda;
+    @FXML
+    private ListView<makina> id_makinaErabiltzaileaZerrenda1;
+    @FXML
+    private AnchorPane id_makinaErabiltzaileaInfoPantaila;
+    @FXML
+    private Label id_label_makinaErabiltzaileaZerrenda;
+
+    @FXML
+    void gehituMakinaErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void gehituMakinaErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void kenduMakinaErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void kenduMakinaErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void aldatuMakinaErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void aldatuMakinaErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void zerrendatuMakinaErabiltzaileakPantaila(ActionEvent event) {
+    }
+    
+
+
+    
+
+//********************************************************************************************************************  
+//                                                    PIEZA MOTA  
+//********************************************************************************************************************
+
+
+    @FXML
+    private Button id_button_aldatuPiezaMota;
+    @FXML
+    private Button id_button_gehituPiezaMota;
+    @FXML
+    private Button id_button_kenduPiezaMota;
+    @FXML
+    private Button id_button_zerrendatuPiezaMota;
+    @FXML
+    private VBox id_ezkerMenua_piezaMota;
+    @FXML
+    private ImageView id_imagePiezaMotak;
+    @FXML
+    private TextField id_sartuIzenaPiezaMota;
+    @FXML
+    private TextField id_sartuIDPiezaMota;   
+    @FXML
+    private Button id_gehituPiezaMota;
+    @FXML
+    private TitledPane id_piezaMotaGehituPantaila;   
+    @FXML
+    private TextField id_kenduIDPiezaMota;
+    @FXML
+    private TextField id_kenduIzenaPiezaMota;
+    @FXML
+    private Button id_KenduPiezaMota;
+    @FXML
+    private TitledPane id_PiezaMotaAldatuPantaila;
+    @FXML
+    private TitledPane id_piezaMotaKenduPantaila;
+    @FXML
+    private TextField id_aldatuIDPiezaMota;
+    @FXML
+    private TextField id_aldatuIzenaPiezaMota;
+    @FXML
+    private Button id_aldatuPiezaMota;
+    @FXML
+    private TitledPane id_piezaMotaZerrendatuPantaila;
+    @FXML
+    private ListView<makina> id_piezaMotaZerrenda;
+    @FXML
+    private ListView<makina> id_piezaMotaZerrenda1;
+    @FXML
+    private AnchorPane id_piezaMotaInfoPantaila;
+    @FXML
+    private Label id_label_piezaMotaZerrenda;
+
+    @FXML
+    void gehituPiezaMotaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void gehituPiezaMota(ActionEvent event) {
+    }
+    @FXML
+    void kenduPiezaMotaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void kenduPiezaMota(ActionEvent event) {
+    }
+    @FXML
+    void aldatuPiezaMotaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void aldatuPiezaMota(ActionEvent event) {
+    }
+    @FXML
+    void zerrendatuPiezaMotakPantaila(ActionEvent event) {
+    }
+    
+
+
+
+
+
+
+
+
 
 }
