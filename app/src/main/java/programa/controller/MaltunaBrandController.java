@@ -35,108 +35,78 @@ public class MaltunaBrandController {
 //********************************************************************************************************************
     @FXML
     private TextArea id_aldatuDeskribapenaMakina;
-
     @FXML
     private TextField id_aldatuIDMakina;
-
     @FXML
     private DatePicker id_aldatuInstalakuntzaDataMakina;
-
     @FXML
     private TextField id_aldatuIzenaMakina;
-
     @FXML
     private TextField id_aldatuPotentziaMakina;
-
     @FXML
-    private Button id_button_GehituMakina;
-
+    private Button id_gehituMakina;
     @FXML
     private Button id_button_aldatuMakina;
-
+    @FXML
+    private Button id_aldatuMakina;
     @FXML
     private Button id_button_gehituMakina;
-
     @FXML
     private Button id_button_kenduMakina;
-
-    // @FXML
-    // private Button id_button_zerrendatuMakina;
-
+    @FXML
+    private Button id_kenduMakina;
+    @FXML
+    private Button id_button_zerrendatuMakina;
     @FXML
     private VBox id_ezkerMenua_makina;
-
     @FXML
     private AnchorPane id_footerra;
-
     @FXML
     private ImageView id_imageMakina;
-
     @FXML
     private TextArea id_kenduDeskribapenaMakina;
-
     @FXML
     private TextField id_kenduIDMakina;
-
     @FXML
     private DatePicker id_kenduInstalakuntzaDataMakina;
-
     @FXML
     private TextField id_kenduIzenaMakina;
-
     @FXML
     private TextField id_kenduPotentziaMakina;
-
     @FXML
     private TitledPane id_makinaAldatuPantaila;
-
     @FXML
     private AnchorPane id_makinaEkintzaPantaila;
-
     @FXML
     private TitledPane id_makinaGehituPantaila;
-
     @FXML
     private AnchorPane id_makinaInfoPantaila;
-
     @FXML
     private TitledPane id_makinaKenduPantaila;
-
     @FXML
     private ListView<makina> id_makinaZerrenda;
-     @FXML
+    @FXML
     private ListView<makina> id_makinaZerrenda1;
-
     @FXML
     private AnchorPane id_oinarria;
-
     @FXML
     private TextArea id_sartuDeskribapenaMakina;
-
     @FXML
     private TextField id_sartuIDMakina;
-
     @FXML
     private DatePicker id_sartuInstalakuntzaDataMakina;
-
     @FXML
     private TextField id_sartuIzenaMakina;
-
     @FXML
     private TextField id_sartuPotentziaMakina;
-
     @FXML
     private TabPane id_tabPane_elementuak;
-
     @FXML
     private Label id_label_makinaZerrenda;
-
     @FXML
     private Button id_button_makinaBilatu;
-
     @FXML
     private Button id_button_makinaBilatu1;
-
     @FXML
     private TitledPane id_makinaZerrendatuPantaila;
 
@@ -676,10 +646,6 @@ public class MaltunaBrandController {
     }
 
 
-
-
-
-
     public ObservableList<makina> makinaZerrenda() {
 
         ObservableList<makina> makinak = FXCollections.observableArrayList();
@@ -737,7 +703,137 @@ public class MaltunaBrandController {
         }
         return makinak;
     }
-}
+
 //********************************************************************************************************************  
 //                                                     ERABILTZAILEA  
 //********************************************************************************************************************
+
+
+
+    @FXML
+    private Button id_button_aldatuErabiltzailea;
+    @FXML
+    private Button id_button_gehituErabiltzailea;
+    @FXML
+    private Button id_button_kenduErabiltzailea;
+    @FXML
+    private Button id_button_zerrendatuErabiltzailea;
+    @FXML
+    private VBox id_ezkerMenua_erabiltzailea;
+    @FXML
+    private ImageView id_imageErabiltzailea;
+    @FXML
+    private TextField id_sartuAbizena1Erabiltzailea;
+    @FXML
+    private DatePicker id_sartuAltaDataErabiltzailea;
+    @FXML
+    private TextField id_sartuEmailaErabiltzailea;
+    @FXML
+    private TextField id_sartuHelbideaErabiltzailea;
+    @FXML
+    private TextField id_sartuIDErabiltzailea;
+    @FXML
+    private TextField id_sartuIzenaErabiltzailea;
+    @FXML
+    private DatePicker id_sartuJaiotzeDataErabiltzailea;
+    @FXML
+    private TextField id_sartuNANErabiltzailea;
+    @FXML
+    private TextField id_sartuPostaKodeaErabiltzailea;
+    @FXML
+    private Button id_gehituErabiltzailea;
+    @FXML
+    private TitledPane id_erbiltzaileaGehituPantaila;   
+    @FXML
+    private TextField id_kenduIDErabiltzailea;
+    @FXML
+    private TextField id_kenduIzenaErabiltzailea;
+    @FXML
+    private TextField id_kenduAbizena1Erabiltzailea;
+    @FXML
+    private TextField id_kenduNANErabiltzailea;
+    @FXML
+    private TextField id_kenduHelbideaErabiltzailea;
+    @FXML
+    private TextField id_kenduPostaKodeaErabiltzailea;
+    @FXML
+    private TextField id_kenduEmailaErabiltzailea;
+    @FXML
+    private DatePicker id_kenduJaiotzeDataErabiltzailea;
+    @FXML
+    private DatePicker id_kenduAltaDataErabiltzailea;
+    @FXML
+    private Button id_kenduErabiltzailea;
+
+    @FXML
+    private TitledPane id_erabiltzaileaAldatuPantaila;
+     @FXML
+    private TextField id_aldatuIDErabiltzailea;
+     @FXML
+    private TextField id_aldatuIzenaErabiltzailea;
+     @FXML
+    private TextField id_aldatuAbizena1Erabiltzailea;
+     @FXML
+    private TextField id_aldatuNANErabiltzailea;
+     @FXML
+    private TextField id_aldatuHelbideaErabiltzailea;
+     @FXML
+    private TextField id_aldatuPostaKodeaErabiltzailea;
+     @FXML
+    private TextField id_aldatuEmailaErabiltzailea;
+    @FXML
+    private DatePicker id_aldatuJaiotzeDataErabiltzailea;
+    @FXML
+    private DatePicker id_aldatuAltaDataErabiltzailea;
+    @FXML
+    private Button id_aldatuErabiltzailea;
+    @FXML
+    private TitledPane id_erabiltzaileaZerrendatuPantaila;
+    @FXML
+    private ListView<makina> id_erabiltzaileaZerrenda;
+    @FXML
+    private ListView<makina> id_erabiltzaileaZerrenda1;
+    @FXML
+    private AnchorPane id_erabiltzaileaInfoPantaila;
+    @FXML
+    private Label id_label_erabiltzaileaZerrenda;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FXML
+    void gehituErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void gehituErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void kenduErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void kenduErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void aldatuErabiltzaileaPantaila(ActionEvent event) {
+    }
+    @FXML
+    void aldatuErabiltzailea(ActionEvent event) {
+    }
+    @FXML
+    void zerrendatuErabiltzaileakPantaila(ActionEvent event) {
+    }
+    
+    
+
+}

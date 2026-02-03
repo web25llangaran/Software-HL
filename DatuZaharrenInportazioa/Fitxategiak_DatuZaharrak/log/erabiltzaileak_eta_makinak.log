@@ -1,3 +1,18 @@
-2026-02-02T10:23:12.862756400 INFO: Komunikazio kanala irekita dago.
-2026-02-02T10:23:12.864194900 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_erabiltzailea,id_makina,hasiera_data,amaiera_data
-2026-02-02T10:23:12.880295900 ERROR: Errorea erabiltzailearen datuak sortzean: Duplicate entry '1-1' for key 'makina_erabiltzailea.PRIMARY'
+2026-02-03T18:54:57.512221200 INFO: Komunikazio kanala irekita dago.
+2026-02-03T18:54:57.512221200 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_erabiltzailea,id_makina,hasiera_data,amaiera_data
+2026-02-03T18:54:57.516286700 INFO: 2 Errenkada inportatua: 1,1,2024-01-01,2024-06-30
+2026-02-03T18:54:57.516286700 ERROR: 3 Fitxategian irakurritako lerroa okerra da: 1,2,2024-07-01
+2026-02-03T18:54:57.520161100 INFO: 4 Errenkada inportatua: 2,1,2024-01-01,2024-12-31
+2026-02-03T18:54:57.520161100 ERROR: 5 Fitxategian irakurritako lerroa okerra da: 3,3,2024-02-15
+2026-02-03T18:54:57.522159800 INFO: 6 Errenkada inportatua: 4,2,2024-01-10,2024-05-20
+2026-02-03T18:54:57.522159800 ERROR: 7 Fitxategian irakurritako lerroa okerra da: 4,1,2024-05-21
+2026-02-03T18:54:57.522159800 ERROR: 8 Fitxategian irakurritako lerroa okerra da: 5,2,2024-03-01
+2026-02-03T18:54:57.522159800 ERROR: 9 Fitxategian irakurritako lerroa okerra da: 5,3,2024-08-15
+2026-02-03T18:54:57.524186400 INFO: 10 Errenkada inportatua: 6,1,2024-01-15,2024-04-10
+2026-02-03T18:54:57.524186400 ERROR: 11 Fitxategian irakurritako lerroa okerra da: 7,3,2024-01-20,
+2026-02-03T18:54:57.527177 INFO: 12 Errenkada inportatua: 8,3,2024-02-01,2024-11-30
+2026-02-03T18:54:57.527177 ERROR: 13 Fitxategian irakurritako lerroa okerra da: 2,3,2025-01-05
+2026-02-03T18:54:57.527177 ERROR: 14 Fitxategian irakurritako lerroa okerra da: 
+2026-02-03T18:54:57.527177 ERROR: 15 Fitxategian irakurritako lerroa okerra da: 
+2026-02-03T18:54:57.527177 INFO: Konexioa itxi da.
+2026-02-03T18:54:57.527177 INFO: 5 errenkada inportatu dira!

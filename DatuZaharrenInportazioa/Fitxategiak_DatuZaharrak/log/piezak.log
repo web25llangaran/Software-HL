@@ -1,3 +1,12 @@
-2026-02-02T10:23:12.907826700 INFO: Komunikazio kanala irekita dago.
-2026-02-02T10:23:12.907826700 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_pieza,izena,deskribapena,pisua(gr),prezioa,stock
-2026-02-02T10:23:12.923074700 ERROR: Errorea piezaren datuak sortzean: Duplicate entry '101' for key 'pieza.PRIMARY'
+2026-02-03T18:54:57.542671500 INFO: Komunikazio kanala irekita dago.
+2026-02-03T18:54:57.542671500 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_pieza,izena,deskribapena,pisua(gr),prezioa,stock
+2026-02-03T18:54:57.548066900 INFO: 2 Errenkada inportatua: 101,Torloju herdoilgaitza,M8 neurriko torloju industriala,15,1,250
+2026-02-03T18:54:57.550115700 INFO: 3 Errenkada inportatua: 102,Engranaje nagusia,Altzairuzko transmisio pieza,2500,1,174
+2026-02-03T18:54:57.552085700 INFO: 4 Errenkada inportatua: 103,Lotura plaka,L formako euskarri metalikoa,450,2,75
+2026-02-03T18:54:57.554084800 INFO: 5 Errenkada inportatua: 104,Torloju auto-zulatzailea,Zura lotzeko punta zorrotzeko torlojua,8,1,101
+2026-02-03T18:54:57.556092600 INFO: 6 Errenkada inportatua: 105,Engranaje konikoa,Mugimenduaren norabidea aldatzeko pieza,850,3,322
+2026-02-03T18:54:57.557089700 INFO: 7 Errenkada inportatua: 106,Zulaturiko plaka,Muntaia anitzetarako aluminiozko plaka,320,1,71
+2026-02-03T18:54:57.559087600 INFO: 8 Errenkada inportatua: 107,Engranaje helikoidala,Transmisio isilerako hortz inklinatuko pieza,1100,4,86
+2026-02-03T18:54:57.562085300 INFO: 9 Errenkada inportatua: 108,Allen torlojua,Burua barne-hexagonal duena,12,1,39
+2026-02-03T18:54:57.562085300 INFO: Konexioa itxi da.
+2026-02-03T18:54:57.563067900 INFO: 8 errenkada inportatu dira!

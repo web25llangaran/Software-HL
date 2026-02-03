@@ -36,7 +36,7 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab fx:id="id_tab_makina" text="Makina">
+                  <Tab text="Makina">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -99,7 +99,7 @@
                                                                   <DatePicker fx:id="id_sartuInstalakuntzaDataMakina" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
-                                                            <Button fx:id="id_button_GehituMakina" mnemonicParsing="false" onAction="#gehituMakina" styleClass="ezker_menua_botoia" text="Gehitu" />
+                                                            <Button fx:id="id_gehituMakina" mnemonicParsing="false" onAction="#gehituMakina" styleClass="ezker_menua_botoia" text="Gehitu" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -143,7 +143,7 @@
                                                                   <DatePicker fx:id="id_kenduInstalakuntzaDataMakina" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
-                                                            <Button fx:id="id_button_kenduMakina" mnemonicParsing="false" onAction="#kenduMakina" styleClass="ezker_menua_botoia" text="Kendu" />
+                                                            <Button fx:id="id_kenduMakina" mnemonicParsing="false" onAction="#kenduMakina" styleClass="ezker_menua_botoia" text="Kendu" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -187,7 +187,7 @@
                                                                   <DatePicker fx:id="id_aldatuInstalakuntzaDataMakina" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
-                                                            <Button fx:id="id_button_aldatuMakina" mnemonicParsing="false" onAction="#aldatuMakina" styleClass="ezker_menua_botoia" text="Aldatu" />
+                                                            <Button fx:id="id_aldatuMakina" mnemonicParsing="false" onAction="#aldatuMakina" styleClass="ezker_menua_botoia" text="Aldatu" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -224,17 +224,276 @@
                         </AnchorPane>
                     </content>
                   </Tab>
+                  <Tab text="Erabiltzailea">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="id_ezkerMenua_erabiltzailea" alignment="TOP_CENTER" prefHeight="497.0" prefWidth="190.0" spacing="15.0" styleClass="ezker_menua" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <Button fx:id="id_button_gehituErabiltzailea" mnemonicParsing="false" onAction="#gehituErabiltzaileaPantaila" prefHeight="40.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Gehitu" />
+                                    <Button fx:id="id_button_kenduErabiltzailea" mnemonicParsing="false" onAction="#kenduErabiltzaileaPantaila" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Kendu" />
+                                    <Button fx:id="id_button_aldatuErabiltzailea" mnemonicParsing="false" onAction="#aldatuErabiltzaileaPantaila" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Aldatu" />
+                                    <Button fx:id="id_button_zerrendatuErabiltzailea" mnemonicParsing="false" onAction="#zerrendatuErabiltzaileakPantaila" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Zerrendatu" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </VBox>
+                              <SplitPane dividerPositions="0.8255250403877222" layoutX="190.0" layoutY="5.0" orientation="VERTICAL" prefHeight="502.0" prefWidth="546.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <ImageView fx:id="id_imageErabiltzailea" fitHeight="560.0" fitWidth="894.0" layoutX="238.0" layoutY="37.0" opacity="0.3" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-86.60000000000002" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="-419.6" AnchorPane.topAnchor="37.0">
+                                             <image>
+                                                <Image url="@Logoa/TxirbilDBHorizontal.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TitledPane fx:id="id_erabiltzaileaGehituPantaila" animated="false" layoutX="43.0" layoutY="7.0" text="Erabiltzailea gehitu - Sartu datuak" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="ID Erabiltzailea" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuIDErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Izena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuIzenaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Abizena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuAbizena1Erabiltzailea" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="NAN" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuNANErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Helbidea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuHelbideaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Posta Kodea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuPostaKodeaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="500.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Emaila" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_sartuEmailaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Jaiotze Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_sartuJaiotzeDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="326.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Alta Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_sartuAltaDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <Button fx:id="id_gehituErabiltzailea" mnemonicParsing="false" onAction="#gehituErabiltzailea" styleClass="ezker_menua_botoia" text="Gehitu" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane fx:id="id_makinaKenduPantaila1" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Erabiltzailea kendu - Aukeratu ezazu beheko zerrendan kendu nahi duzun erabiltzailea edo IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="ID Erabiltzailea" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduIDErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Izena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduIzenaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Abizena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduAbizena1Erabiltzailea" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="NAN" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduNANErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Helbidea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduHelbideaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Posta Kodea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduPostaKodeaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="500.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Emaila" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduEmailaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Jaiotze Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_kenduJaiotzeDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="326.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Alta Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_kenduAltaDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <Button fx:id="id_kenduErabiltzailea" mnemonicParsing="false" onAction="#kenduErabiltzailea" styleClass="ezker_menua_botoia" text="Kendu" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane fx:id="id_erabiltzaileaAldatuPantaila" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Erabiltzailea aldatu - Aukeratu ezazu beheko zerrendan aldatu nahi duzun erabiltzailea edo bere IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="ID Erabiltzailea" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuIDErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Izena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuIzenaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Abizena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuAbizena1Erabiltzailea" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="NAN" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuNANErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Helbidea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuHelbideaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Posta Kodea" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuPostaKodeaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="500.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Emaila" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_aldatuEmailaErabiltzailea" prefHeight="40.0" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Jaiotze Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_aldatuJaiotzeDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="326.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
+                                                               <children>
+                                                                  <Label text="Alta Data" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <DatePicker fx:id="id_aldatuAltaDataErabiltzailea" prefWidth="800.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <Button fx:id="id_aldatuErabiltzailea" mnemonicParsing="false" onAction="#aldatuErabiltzailea" styleClass="ezker_menua_botoia" text="Aldatu" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane fx:id="id_erabiltzaileaZerrendatuPantaila" animated="false" layoutX="20.0" layoutY="20.0" prefHeight="510.4" prefWidth="658.4" text="Erabiltzaile zerrenda" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox prefHeight="469.6" prefWidth="656.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <ListView fx:id="id_erabiltzaileaZerrenda1" prefHeight="469.6" prefWidth="656.8" VBox.vgrow="ALWAYS" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="id_erabiltzaileaInfoPantaila" minHeight="0.0" minWidth="0.0" prefHeight="253.0" prefWidth="434.0">
+                                       <children>
+                                          <VBox prefHeight="104.0" prefWidth="658.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label fx:id="id_label_erabiltzaileaZerrenda" text="Makina Zerrenda:" visible="false" />
+                                                <ListView fx:id="id_erabiltzaileaZerrenda" prefHeight="104.0" prefWidth="658.4" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
                   <Tab fx:id="id_tab_makinaErabiltzailea" text="Makina - Erabiltzailea">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                   </Tab>
-                  <Tab fx:id="id_tab_pieza" text="Pieza">
+                  <Tab text="Pieza">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                   </Tab>
-                  <Tab fx:id="id_tab_piezaMota" text="Pieza mota">
+                  <Tab text="Pieza mota">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
