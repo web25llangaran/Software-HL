@@ -1,0 +1,3 @@
+2026-02-02T10:23:12.907826700 INFO: Komunikazio kanala irekita dago.
+2026-02-02T10:23:12.907826700 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_pieza,izena,deskribapena,pisua(gr),prezioa,stock
+2026-02-02T10:23:12.923074700 ERROR: Errorea piezaren datuak sortzean: Duplicate entry '101' for key 'pieza.PRIMARY'

@@ -1,0 +1,3 @@
+2026-02-02T10:23:12.189886900 INFO: Komunikazio kanala irekita dago.
+2026-02-02T10:23:12.192887100 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: Id_erabiltzaileak,Izena,Abizena1,NAN,Helbidea,Posta Kodea,Email,Jaiotze data,Alta data
+2026-02-02T10:23:12.734789100 ERROR: Errorea erabiltzailearen datuak sortzean: Duplicate entry '1' for key 'erabiltzailea.PRIMARY' 

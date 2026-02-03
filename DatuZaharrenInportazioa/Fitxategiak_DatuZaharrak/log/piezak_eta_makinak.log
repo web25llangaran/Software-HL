@@ -1,0 +1,13 @@
+2026-02-02T10:23:13.037455900 INFO: Komunikazio kanala irekita dago.
+2026-02-02T10:23:13.037455900 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da:id_pieza,id_makina
+2026-02-02T10:23:13.038437500 INFO: 2 Errenkada inportatua: 101,1
+2026-02-02T10:23:13.039439 INFO: 3 Errenkada inportatua: 102,2
+2026-02-02T10:23:13.040438 INFO: 4 Errenkada inportatua: 103,3
+2026-02-02T10:23:13.041439500 INFO: 5 Errenkada inportatua: 104,1
+2026-02-02T10:23:13.042439900 INFO: 6 Errenkada inportatua: 105,2
+2026-02-02T10:23:13.042439900 INFO: 7 Errenkada inportatua: 106,3
+2026-02-02T10:23:13.043524900 INFO: 8 Errenkada inportatua: 107,2
+2026-02-02T10:23:13.043524900 INFO: 9 Errenkada inportatua: 108,1
+2026-02-02T10:23:13.043524900 ERROR 10 Fitxategian irakurritako lerroa okerra da: 
+2026-02-02T10:23:13.044452200 INFO: Konexioa itxi da.
+2026-02-02T10:23:13.044452200 INFO: 8 errenkada inportatu dira!

@@ -1,0 +1,3 @@
+2026-02-02T10:23:12.784993 INFO: Komunikazio kanala irekita dago.
+2026-02-02T10:23:12.786536300 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_makina,izena,deskribapena,potentzia(kw),instalazio data
+2026-02-02T10:23:12.832393800 ERROR: Errorea erabiltzailearen datuak sortzean: Duplicate entry '1' for key 'makina.PRIMARY' 
