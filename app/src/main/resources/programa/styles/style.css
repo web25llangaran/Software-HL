@@ -18,9 +18,9 @@
 .ezker_menua_botoia:hover {
     -fx-text-fill: rgb(15, 116, 184);
 }
-#id_makinaEkintzaPantaila{
+/* #id_makinaEkintzaPantaila{
     -fx-background-image: url "Logoa\TxirbilDBHorizontal.png"
-}
+} */
 .footer_urdina {
     -fx-background-color: rgb(15, 116, 184);
 }

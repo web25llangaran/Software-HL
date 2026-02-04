@@ -920,7 +920,7 @@
                                                 <Image url="@Logoa/TxirbilDBHorizontal.png" />
                                              </image>
                                           </ImageView>
-                                          <TitledPane fx:id="id_piezaMotaGehituPantaila" animated="false" layoutX="43.0" layoutY="7.0" text="Pieza Mota gehitu - Sartu datuak" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TitledPane fx:id="id_piezaMotaGehituPantaila" animated="false" layoutX="43.0" layoutY="7.0" prefHeight="510.4" prefWidth="658.4" text="Pieza Mota gehitu - Sartu datuak" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
@@ -949,12 +949,13 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
-                                                                  <Label text="ID Pieza Mota" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kenduIDPiezaMota" prefHeight="40.0" prefWidth="800.0" />
+                                                                  <Label text="ID Pieza Mota" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
+                                                                  <TextField fx:id="id_kenduIDPiezaMota" prefHeight="40.0" prefWidth="710.0" />
+                                                                  <Button fx:id="id_button_piezaMotaBilatu" mnemonicParsing="false" onAction="#piezaMotaBilatuKendun" text="Bilatu" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -988,7 +989,7 @@
                                                                   <TextField fx:id="id_aldatuIzenaPiezaMota" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
-                                                            <Button fx:id="id_aldatuPiezaMota" mnemonicParsing="false" onAction="#aldatuPiezaMota" styleClass="ezker_menua_botoia" text="Aldatu" />
+                                                            <Button fx:id="id_KenduPiezaMota1" mnemonicParsing="false" onAction="#aldatuPiezaMota" styleClass="ezker_menua_botoia" text="Aldatu" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -1001,7 +1002,7 @@
                                                    <children>
                                                       <VBox prefHeight="469.6" prefWidth="656.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <ListView fx:id="id_piezaMotaZerrenda1" prefHeight="469.6" prefWidth="656.8" VBox.vgrow="ALWAYS" />
+                                                            <ListView fx:id="id_piezaZerrenda11" prefHeight="469.6" prefWidth="656.8" VBox.vgrow="ALWAYS" />
                                                          </children>
                                                       </VBox>
                                                    </children>
