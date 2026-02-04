@@ -980,7 +980,8 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Pieza Mota" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_aldatuIDPiezaMota" prefHeight="40.0" prefWidth="800.0" />
+                                                                  <TextField fx:id="id_aldatuIDPiezaMota" prefHeight="40.0" prefWidth="710.0" />
+                                                                  <Button fx:id="id_button_piezaMotaBilatu1" mnemonicParsing="false" onAction="#piezaMotaBilatuAldatun" text="Bilatu" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -1002,7 +1003,7 @@
                                                    <children>
                                                       <VBox prefHeight="469.6" prefWidth="656.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <ListView fx:id="id_piezaZerrenda11" prefHeight="469.6" prefWidth="656.8" VBox.vgrow="ALWAYS" />
+                                                            <ListView fx:id="id_piezaMotaZerrenda1" prefHeight="469.6" prefWidth="656.8" VBox.vgrow="ALWAYS" />
                                                          </children>
                                                       </VBox>
                                                    </children>
