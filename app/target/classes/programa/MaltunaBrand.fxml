@@ -949,7 +949,7 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
@@ -975,7 +975,7 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>

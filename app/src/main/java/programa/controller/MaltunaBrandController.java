@@ -1497,8 +1497,6 @@ public class MaltunaBrandController {
 
 
 
-
-
     @FXML
     void piezaMotaBilatuAldatun(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -1605,10 +1603,4 @@ public class MaltunaBrandController {
         }
         return piezaMotak;
     }
-
-
-
-
-
-
 }
