@@ -687,7 +687,7 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
@@ -704,7 +704,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Makina" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_sartuIDMakinaPieza" />
+                                                                  <TextField fx:id="id_sartuIDMakinaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -716,7 +716,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Deskribapena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextArea fx:id="id_sartuDeskribapenaPieza" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <TextArea fx:id="id_sartuDeskribapenaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -734,7 +734,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Stocka" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_sartuStockPieza" />
+                                                                  <TextField fx:id="id_sartuStockPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <Button fx:id="id_gehituPieza" mnemonicParsing="false" onAction="#gehituPieza" styleClass="ezker_menua_botoia" text="Gehitu" />
@@ -748,12 +748,13 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Pieza" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kenduIDPieza" prefHeight="40.0" prefWidth="800.0" />
+                                                                  <TextField fx:id="id_kenduIDPieza" prefHeight="40.0" prefWidth="710.0" />
+                                                                  <Button fx:id="id_button_piezaBilatu" mnemonicParsing="false" onAction="#piezaBilatuKendun" text="Bilatu" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -765,7 +766,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Makina" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kenduIDMakinaPieza" />
+                                                                  <TextField fx:id="id_kenduIDMakinaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -777,7 +778,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Deskribapena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextArea fx:id="id_kenduDeskribapenaPieza" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <TextArea fx:id="id_kenduDeskribapenaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -795,7 +796,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Stocka" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kenduStockPieza" />
+                                                                  <TextField fx:id="id_kenduStockPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <Button fx:id="id_kenduPieza" mnemonicParsing="false" onAction="#kenduPieza" styleClass="ezker_menua_botoia" text="Kendu" />
@@ -805,16 +806,17 @@
                                                 </AnchorPane>
                                              </content>
                                           </TitledPane>
-                                          <TitledPane fx:id="id_PiezaAldatuPantaila" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Pieaza aldatu - Aukeratu ezazu beheko zerrendan aldatu nahi duzun pieza edo bere IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TitledPane fx:id="id_piezaAldatuPantaila" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Pieaza aldatu - Aukeratu ezazu beheko zerrendan aldatu nahi duzun pieza edo bere IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <VBox alignment="CENTER" prefHeight="363.2" prefWidth="535.2" spacing="30.0">
+                                                      <VBox alignment="CENTER" prefHeight="469.6" prefWidth="656.8" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Pieza" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_aldatuIDPieza" prefHeight="40.0" prefWidth="800.0" />
+                                                                  <TextField fx:id="id_aldatuIDPieza" prefHeight="40.0" prefWidth="710.0" />
+                                                                  <Button fx:id="id_button_piezaBilatu1" mnemonicParsing="false" onAction="#piezaBilatuAldatun" text="Bilatu" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -826,7 +828,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Makina" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_aldatuIDMakinaPieza" />
+                                                                  <TextField fx:id="id_aldatuIDMakinaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -838,7 +840,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Deskribapena" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextArea fx:id="id_aldatuDeskribapenaPieza" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <TextArea fx:id="id_aldatuDeskribapenaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -856,7 +858,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Stocka" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_aldatuStockPieza" />
+                                                                  <TextField fx:id="id_aldatuStockPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <Button fx:id="id_aldatuPieza" mnemonicParsing="false" onAction="#aldatuPieza" styleClass="ezker_menua_botoia" text="Aldatu" />
