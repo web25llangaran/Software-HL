@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import programa.DBKonexioa;
 import programa.model.makina;
+import programa.model.makinaErabiltzailea;
 import programa.model.piezaMota;
 
 
@@ -996,37 +997,310 @@ public class MaltunaBrandController {
     @FXML
     private TitledPane id_makinaErabiltzaileaZerrendatuPantaila;
     @FXML
-    private ListView<makina> id_makinaErabiltzaileaZerrenda;
+    private ListView<makinaErabiltzailea> id_makinaErabiltzaileaZerrenda;
     @FXML
-    private ListView<makina> id_makinaErabiltzaileaZerrenda1;
+    private ListView<makinaErabiltzailea> id_makinaErabiltzaileaZerrenda1;
     @FXML
     private AnchorPane id_makinaErabiltzaileaInfoPantaila;
     @FXML
     private Label id_label_makinaErabiltzaileaZerrenda;
+    @FXML
+    private Button id_button_makinaErabiltzaileaBilatu;
+    @FXML
+    private Button id_button_makinaErabiltzaileaBilatu1;
+    @FXML
+    private Button id_button_makinaErabiltzaileaBilatu2;
+    @FXML
+    private Button id_button_makinaErabiltzaileaBilatu3;
+
+    
+    
+
+
+
+
+
 
     @FXML
     void gehituMakinaErabiltzaileaPantaila(ActionEvent event) {
+        id_imageMakinaErabiltzailea.setVisible(false);
+        id_makinaErabiltzaileaKenduPantaila.setVisible(false);
+        id_makinaErabiltzaileaAldatuPantaila.setVisible(false);
+        id_makinaErabiltzaileaGehituPantaila.setVisible(true);
+        id_makinaErabiltzaileaZerrendatuPantaila.setVisible(false);
+        id_label_makinaErabiltzaileaZerrenda.setVisible(false);
+        ObservableList<makinaErabiltzailea> makinaErabiltzaileak = FXCollections.observableArrayList();
+        // Pantaila garbitu, textfieldak
+        id_makinaErabiltzaileaZerrenda.setItems(makinaErabiltzaileak);
+        id_sartuIDErabiltzailea1.setText("");
+        id_sartuIDMakina1.setText("");
+        id_sartuHasieraDataMakinaErabiltzailea.setValue(null); 
+        id_sartuAmaieraDataMakinaErabiltzailea.setValue(null);  
+        id_sartuHasieraDataMakinaErabiltzailea.getEditor().clear();   
+        id_sartuAmaieraDataMakinaErabiltzailea.getEditor().clear();  
     }
+
+
+
     @FXML
     void gehituMakinaErabiltzailea(ActionEvent event) {
+        // escenetik makinaErabiltzailearen datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean makinaErabiltzaileaTxertatua = false;
+        String id_erabiltzailea = id_sartuIDErabiltzailea1.getText();
+        String id_makina = id_sartuIDMakina1.getText();
+        LocalDate hasData = id_sartuHasieraDataMakinaErabiltzailea.getValue();
+        LocalDate amaiData = id_sartuAmaieraDataMakinaErabiltzailea.getValue();
+        // Instalakuntza data Stringera pasa
+        String hasieraData = "";
+         String amaieraData = "";
+        if (hasData != null) {
+            hasieraData = hasData.toString();
+        }
+        if (amaiData != null) {
+            amaieraData = amaiData.toString();
+        }
+        // Escenetik jasotako daturen bat hutsik badago abixatu
+        if (!id_erabiltzailea.isEmpty() && !id_makina.isEmpty() && !hasieraData.isEmpty() && !amaieraData.isEmpty()) {
+            // makinaErabiltzaileBerria objetua sortu
+            try {
+                makinaErabiltzailea makinaErabiltzaileBerria = new makinaErabiltzailea(Integer.parseInt(id_erabiltzailea), Integer.parseInt(id_makina), hasieraData, amaieraData);
+                // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                // kudeatzeko.
+                DBKonexioa dataBkonexioa = new DBKonexioa();
+
+                try {
+                    // konektatu() metodoari deitzen zaio.
+                    // Metodo honek Connection motako objektu bat itzultzen du,
+                    // eta SQLException jaurtitzen du errorea gertatzen bada.
+                    Connection konexioa = dataBkonexioa.konektatu();
+                    // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                    if (konexioa != null && !konexioa.isClosed()) {
+                        System.out.println("Komunikazio kanala irekita dago.");
+                        // **INSERT INTO MAKINA_ERABILTZAILEA** SQL kontsulta prestatzen da
+                        String kontsulta = "INSERT INTO MAKINA_ERABILTZAILEA (ID_ERABILTZAILEA,ID_MAKINA,HASIERA_DATA, AMAIERA_DATA) VALUES(?,?,?,?)";
+                        PreparedStatement agindua = konexioa.prepareStatement(kontsulta);
+
+                        // Parametroak prestatzen dira, bakoitza dagokion zutabera sartzeko
+                        agindua.setInt(1, makinaErabiltzaileBerria.getId_erabiltzailea());
+                        agindua.setInt(2, makinaErabiltzaileBerria.getId_makina());
+                        agindua.setDate(3, java.sql.Date.valueOf(makinaErabiltzaileBerria.getHasiera_data()));
+                        agindua.setDate(4, java.sql.Date.valueOf(makinaErabiltzaileBerria.getAmaiera_data()));
+
+                        // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                        // executeUpdate() metodoak 1 itzultzen du, kontsulta ondo exekutatzen bada.
+                        int emaitza = agindua.executeUpdate();
+
+                        // Emaitza balioztatzen da: 1 itzultzen bada, datuak sartu dira.
+                        if (emaitza == 1) {
+                            System.out.println("Makina_Erabiltzaile berria datu basean txertatu da");
+                            makinaErabiltzaileaTxertatua = true;
+                        }
+                        // Datu-basearekin konektatutako kanala itxi egiten da,
+                        // memoria eta baliabideak askatzeko.
+                        konexioa.close();
+                    }
+                } catch (SQLException e) {
+                    // Salbuespen bat sortzen da SQL aginduak exekutatzen direnean errore bat
+                    // gertatuz gero.
+                    // Adibidez, datuak sartzeko parametroak okerrak izan daitezke edo taula ez
+                    // egon.
+                    System.out.println("Errorea makina erabiltzailearen datuak sortzean.");
+                    e.printStackTrace(); // Errorea aztertzeko informazioa bistaratzeko
+                }
+                if (makinaErabiltzaileaTxertatua) {
+                    alerta.setTitle("INFO");
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Makina erabiltzaile berria txertatuta!");
+                    alerta.showAndWait();
+                    id_label_makinaErabiltzaileaZerrenda.setVisible(true);
+                    ObservableList<makinaErabiltzailea> makinaErabiltzaileak = makinaErabiltzaileakZerrenda();
+                    id_makinaErabiltzaileaZerrenda.setItems(makinaErabiltzaileak);
+                    id_makinaErabiltzaileaZerrendatuPantaila.setVisible(true);
+                } else {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                    alerta.setContentText("Ezin izan da makina erabiltzaile berria datu basean txertatu");
+                    alerta.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                alerta.setContentText("Makinaren eta erabiltzailearen IDak zenbaki osoak izan behar dira");
+                alerta.showAndWait();
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_sartuIDErabiltzailea1.setText("");
+        id_sartuIDMakina1.setText("");
+        id_sartuHasieraDataMakinaErabiltzailea.setValue(null); 
+        id_sartuAmaieraDataMakinaErabiltzailea.setValue(null);  
+        id_sartuHasieraDataMakinaErabiltzailea.getEditor().clear();   
+        id_sartuAmaieraDataMakinaErabiltzailea.getEditor().clear();
     }
+
+
+
     @FXML
     void kenduMakinaErabiltzaileaPantaila(ActionEvent event) {
+        id_imageMakinaErabiltzailea.setVisible(false);
+        id_makinaErabiltzaileaKenduPantaila.setVisible(true);
+        id_makinaErabiltzaileaAldatuPantaila.setVisible(false);
+        id_makinaErabiltzaileaGehituPantaila.setVisible(false);
+        id_makinaErabiltzaileaZerrendatuPantaila.setVisible(false);
+        id_makinaErabiltzaileaInfoPantaila.setVisible(true);
+        // Pantaila garbitu, textfieldak
+        id_kenduIDMakina1.setText("");
+        id_kenduIDErabiltzailea1.setText("");
+        id_kenduHasieraDataMakinaErabiltzailea.setValue(null);
+        id_kenduAmaieraDataMakinaErabiltzailea.setValue(null);
+        // Sarreran ez utzi idazten usuarioari
+        // id_kenduIDMakina.setDisable(true);
+        id_kenduHasieraDataMakinaErabiltzailea.setDisable(true);
+        id_kenduAmaieraDataMakinaErabiltzailea.setDisable(true);
+        // Makina erabiltzaileen zerrenda bistaratu:
+        id_label_makinaErabiltzaileaZerrenda.setVisible(true);
+        ObservableList<makinaErabiltzailea> makinaErabiltzaileak = makinaErabiltzaileakZerrenda();
+        id_makinaErabiltzaileaZerrenda.setItems(makinaErabiltzaileak);
+        // Aukeratutako makina jaso
+        id_makinaErabiltzaileaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
+            id_kenduIDMakina1.setText(Integer.toString(aukeraBerria.getId_erabiltzailea()));
+            id_kenduIDErabiltzailea1.setText(Integer.toString(aukeraBerria.getId_makina()));
+            id_kenduHasieraDataMakinaErabiltzailea.setValue((LocalDate.parse(aukeraBerria.getHasiera_data())));
+            id_kenduAmaieraDataMakinaErabiltzailea.setValue((LocalDate.parse(aukeraBerria.getAmaiera_data())));
+        });
+        // Makina erabiltzailearen ID_erabiltzailea sartzean (textField en fokua aldatzean) datu basean aurkitu
+        // makina existitzen den
+        id_kenduIDMakina1.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_kenduIDMakina textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_kenduHasieraDataMakinaErabiltzailea.setValue(null);
+                id_kenduAmaieraDataMakinaErabiltzailea.setValue(null);
+                id_kenduHasieraDataMakinaErabiltzailea.getEditor().clear();   
+                id_kenduAmaieraDataMakinaErabiltzailea.getEditor().clear();
+            }
+        });
+        // Makina erabiltzailearen ID_makina sartzean (textField en fokua aldatzean) datu basean aurkitu
+        // makina existitzen den
+        id_kenduIDErabiltzailea1.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_kenduIDMakina textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_kenduHasieraDataMakinaErabiltzailea.setValue(null);
+                id_kenduAmaieraDataMakinaErabiltzailea.setValue(null);
+                id_kenduHasieraDataMakinaErabiltzailea.getEditor().clear();   
+                id_kenduAmaieraDataMakinaErabiltzailea.getEditor().clear();
+            }
+        });
     }
+    
+        
+//  lllllllllllllllllllllllll
+
+
+
+
     @FXML
     void kenduMakinaErabiltzailea(ActionEvent event) {
     }
+
+
+    @FXML
+    void makinaErabiltzaileaBilatuKendun(ActionEvent event) {
+    }
+
+    
+
     @FXML
     void aldatuMakinaErabiltzaileaPantaila(ActionEvent event) {
     }
     @FXML
     void aldatuMakinaErabiltzailea(ActionEvent event) {
     }
+
+    @FXML
+    void makinaErabiltzaileaBilatuAldatun(ActionEvent event) {
+    }
+
+
+
+
+
+
     @FXML
     void zerrendatuMakinaErabiltzaileakPantaila(ActionEvent event) {
+        id_imageMakinaErabiltzailea.setVisible(false);
+        id_makinaErabiltzaileaKenduPantaila.setVisible(false);
+        id_makinaErabiltzaileaAldatuPantaila.setVisible(false);
+        id_makinaErabiltzaileaGehituPantaila.setVisible(false);
+        id_makinaErabiltzaileaZerrendatuPantaila.setVisible(true);
+        id_makinaErabiltzaileaInfoPantaila.setVisible(false);
+        
+        // Makina erabiltzaileen zerrenda bistaratu:
+        ObservableList<makinaErabiltzailea> makinaErabiltzaileak = makinaErabiltzaileakZerrenda();
+        id_makinaErabiltzaileaZerrenda1.setItems(makinaErabiltzaileak);
     }
     
 
+
+    public ObservableList<makinaErabiltzailea> makinaErabiltzaileakZerrenda() {
+
+        ObservableList<makinaErabiltzailea> makinaErabiltzaileak = FXCollections.observableArrayList();
+        // DBKonexioa klaseko objektu bat sortzen da,
+        // datu-basearekin konexioa kudeatzeko.
+        DBKonexioa konex = new DBKonexioa();
+
+        try {
+            // konektatu() metodoari deitzen zaio.
+            // Metodo honek Connection motako objektu bat bueltatzen du,
+            // eta SQLException jaurti dezake errorea gertatzen bada.
+            Connection cn = konex.konektatu();
+
+            // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+            if (cn != null && !cn.isClosed()) {
+                System.out.println("Komunikazio kanala irekita dago.");
+
+                // PreparedStatement: SQL kontsulta bat prestatzen du
+                // eta exekutatzeko prest dagoen objektu bat sortzen da.
+                // "Prepared" deitzen da, izan ere, SQL aginduak lehenago prestatu etaondoren
+                // exekutatzen direlako.
+                // String motako kontsulta aldagaian "SELECT ID_ERABILTZAILEA, ID_MAKINA,
+                // HASIERA_DATA, AMAIERA_DATA FROM MAKINA_ERABILTZAILEA" agindua gordetzen da
+                String kontsulta = "SELECT ID_ERABILTZAILEA, ID_MAKINA, HASIERA_DATA, AMAIERA_DATA FROM MAKINA_ERABILTZAILEA";
+                // Adierazitako kontsulta prestatzen da
+                PreparedStatement agindua = cn.prepareStatement(kontsulta);
+                // Prestatutako kontsulta exekutatzen da
+                ResultSet emaitza = agindua.executeQuery();
+
+                // ResultSet: SQL kontsultaren emaitzak jasotzen ditu.
+                // "ResultSet" objektuak datu-baseko erantzunaren edukia gordetzen du.
+                while (emaitza.next()) { 
+                    makinaErabiltzailea irakurritakoMakinaErabiltzailea = new makinaErabiltzailea(emaitza.getInt("id_erabiltzailea"), emaitza.getInt("id_makina"),
+                            emaitza.getString("hasiera_data"), emaitza.getString("amaiera_data"));
+                    makinaErabiltzaileak.add(irakurritakoMakinaErabiltzailea);
+                }
+                // ResultSet objektua itxi egiten da, memoria baliabideak askatuz.
+                emaitza.close();
+                // Datu-basearekiko konexioa itxi egiten da.
+                cn.close();
+                System.out.println("Konexioa itxi da.");
+            }
+        } catch (SQLException e) {
+            // Salbuespena harrapatzen da kontsultan edo konexioan
+            // arazoren bat gertatu bada.
+            System.out.println("Errorea kontsulta exekutatzean");
+            e.printStackTrace();
+        }
+        return makinaErabiltzaileak;
+    }
 
     
 
