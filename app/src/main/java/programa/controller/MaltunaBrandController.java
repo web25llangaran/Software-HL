@@ -910,6 +910,12 @@ public class MaltunaBrandController {
     private AnchorPane id_piezaInfoPantaila;
     @FXML
     private Label id_label_piezaZerrenda;
+    @FXML
+    private Button id_button_piezaBilatu;
+    @FXML
+    private Button id_button_piezaBilatu1;
+
+    
 
     @FXML
     void gehituPiezaPantaila(ActionEvent event) {
@@ -1246,6 +1252,11 @@ public class MaltunaBrandController {
     }
 
     @FXML
+    void piezaBilatuKendun(ActionEvent event){}
+
+    
+
+    @FXML
     void aldatuPiezaPantaila(ActionEvent event) {
         id_imagePieza.setVisible(false);
         id_piezaKenduPantaila.setVisible(false);
@@ -1477,6 +1488,13 @@ public class MaltunaBrandController {
         id_aldatuPrezioaPieza.setDisable(true);
         id_aldatuStockPieza.setDisable(true);
     }
+
+
+    @FXML
+    void piezaBilatuAldatun(ActionEvent event) {}
+
+
+    
 
     @FXML
     void zerrendatuPiezakPantaila(ActionEvent event) {
