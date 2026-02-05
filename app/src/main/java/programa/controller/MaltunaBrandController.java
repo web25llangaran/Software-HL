@@ -256,11 +256,13 @@ public class MaltunaBrandController {
         id_makinaZerrenda.setItems(makinak);
         // Aukeratutako makina jaso
         id_makinaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_kenduIDMakina.setText(Integer.toString(aukeraBerria.getId()));
-            id_kenduIzenaMakina.setText(aukeraBerria.getIzena());
-            id_kenduDeskribapenaMakina.setText(aukeraBerria.getDeskribapena());
-            id_kenduPotentziaMakina.setText(Integer.toString(aukeraBerria.getPotentzia()));
-            id_kenduInstalakuntzaDataMakina.setValue((LocalDate.parse(aukeraBerria.getInstalakuntzaData())));
+            if (aukeraBerria != null) {
+                id_kenduIDMakina.setText(Integer.toString(aukeraBerria.getId()));
+                id_kenduIzenaMakina.setText(aukeraBerria.getIzena());
+                id_kenduDeskribapenaMakina.setText(aukeraBerria.getDeskribapena());
+                id_kenduPotentziaMakina.setText(Integer.toString(aukeraBerria.getPotentzia()));
+                id_kenduInstalakuntzaDataMakina.setValue((LocalDate.parse(aukeraBerria.getInstalakuntzaData())));
+            }
         });
         // Makinaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // makina existitzen den
@@ -444,15 +446,17 @@ public class MaltunaBrandController {
         id_makinaZerrenda.setItems(makinak);
         // Aukeratutako makina jaso
         id_makinaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_aldatuIDMakina.setText(Integer.toString(aukeraBerria.getId()));
-            id_aldatuIzenaMakina.setText(aukeraBerria.getIzena());
-            id_aldatuDeskribapenaMakina.setText(aukeraBerria.getDeskribapena());
-            id_aldatuPotentziaMakina.setText(Integer.toString(aukeraBerria.getPotentzia()));
-            id_aldatuInstalakuntzaDataMakina.setValue((LocalDate.parse(aukeraBerria.getInstalakuntzaData())));
-            id_aldatuIzenaMakina.setDisable(false);
-            id_aldatuDeskribapenaMakina.setDisable(false);
-            id_aldatuPotentziaMakina.setDisable(false);
-            id_aldatuInstalakuntzaDataMakina.setDisable(false);
+            if (aukeraBerria != null) {
+                id_aldatuIDMakina.setText(Integer.toString(aukeraBerria.getId()));
+                id_aldatuIzenaMakina.setText(aukeraBerria.getIzena());
+                id_aldatuDeskribapenaMakina.setText(aukeraBerria.getDeskribapena());
+                id_aldatuPotentziaMakina.setText(Integer.toString(aukeraBerria.getPotentzia()));
+                id_aldatuInstalakuntzaDataMakina.setValue((LocalDate.parse(aukeraBerria.getInstalakuntzaData())));
+                id_aldatuIzenaMakina.setDisable(false);
+                id_aldatuDeskribapenaMakina.setDisable(false);
+                id_aldatuPotentziaMakina.setDisable(false);
+                id_aldatuInstalakuntzaDataMakina.setDisable(false);
+            }
         });
         // Makinaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // makina existitzen den
@@ -915,8 +919,6 @@ public class MaltunaBrandController {
     @FXML
     private Button id_button_piezaBilatu1;
 
-    
-
     @FXML
     void gehituPiezaPantaila(ActionEvent event) {
         id_imagePieza.setVisible(false);
@@ -1117,14 +1119,16 @@ public class MaltunaBrandController {
         id_piezaZerrenda.setItems(piezak);
         // Aukeratutako pieza jaso
         id_piezaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_kenduIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
-            id_kenduIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
-            id_kenduIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
-            id_kenduIzenaPieza.setText(aukeraBerria.getIzena());
-            id_kenduDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
-            id_kenduPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
-            id_kenduPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
-            id_kenduStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
+            if (aukeraBerria != null) {
+                id_kenduIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
+                id_kenduIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
+                id_kenduIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
+                id_kenduIzenaPieza.setText(aukeraBerria.getIzena());
+                id_kenduDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
+                id_kenduPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
+                id_kenduPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
+                id_kenduStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
+            }
         });
         // Piezaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza existitzen den
@@ -1252,9 +1256,50 @@ public class MaltunaBrandController {
     }
 
     @FXML
-    void piezaBilatuKendun(ActionEvent event){}
+    void piezaBilatuKendun(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        String id_pieza_string = id_kenduIDPieza.getText();
+        boolean piezaAurkitua = false;
 
-    
+        try {
+            int id_pieza = Integer.parseInt(id_pieza_string);
+            ObservableList<pieza> piezak = piezaZerrenda();
+            for (pieza p : piezak) {
+                if (id_pieza == p.getId_pieza()) {
+                    id_kenduIDPieza.setText(Integer.toString(p.getId_pieza()));
+                    id_kenduIDPiezaMotaPieza.setText(Integer.toString(p.getId_pieza_mota()));
+                    id_kenduIDMakinaPieza.setText(Integer.toString(p.getId_makina()));
+                    id_kenduIzenaPieza.setText(p.getIzena());
+                    id_kenduDeskribapenaPieza.setText(p.getDeskribapena());
+                    id_kenduPisuaPieza.setText(Integer.toString(p.getPisua()));
+                    id_kenduPrezioaPieza.setText(Double.toString(p.getPrezioa()));
+                    id_kenduStockPieza.setText(Integer.toString(p.getStock()));
+                    piezaAurkitua = true;
+                    return;
+                }
+            }
+            if (!piezaAurkitua) {
+                alerta.setTitle("INFO");
+                alerta.setHeaderText(null);
+                alerta.setContentText(id_pieza + " ID dun pieza ez da datu basean aurkitzen!");
+                alerta.showAndWait();
+                id_kenduIDPieza.setText("");
+                id_kenduIDPiezaMotaPieza.setText("");
+                id_kenduIDMakinaPieza.setText("");
+                id_kenduIzenaPieza.setText("");
+                id_kenduDeskribapenaPieza.setText("");
+                id_kenduPisuaPieza.setText("");
+                id_kenduPrezioaPieza.setText("");
+                id_kenduStockPieza.setText("");
+            }
+
+        } catch (NumberFormatException e) {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+            alerta.setContentText("Piezaren IDa zenbaki osoa izan behar da");
+            alerta.showAndWait();
+        }
+    }
 
     @FXML
     void aldatuPiezaPantaila(ActionEvent event) {
@@ -1288,21 +1333,23 @@ public class MaltunaBrandController {
         id_piezaZerrenda.setItems(piezak);
         // Aukeratutako pieza jaso
         id_piezaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_aldatuIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
-            id_aldatuIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
-            id_aldatuIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
-            id_aldatuIzenaPieza.setText(aukeraBerria.getIzena());
-            id_aldatuDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
-            id_aldatuPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
-            id_aldatuPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
-            id_aldatuStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
-            id_aldatuIDPiezaMotaPieza.setDisable(false);
-            id_aldatuIDMakinaPieza.setDisable(false);
-            id_aldatuIzenaPieza.setDisable(false);
-            id_aldatuDeskribapenaPieza.setDisable(false);
-            id_aldatuPisuaPieza.setDisable(false);
-            id_aldatuPrezioaPieza.setDisable(false);
-            id_aldatuStockPieza.setDisable(false);
+            if (aukeraBerria != null) {
+                id_aldatuIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
+                id_aldatuIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
+                id_aldatuIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
+                id_aldatuIzenaPieza.setText(aukeraBerria.getIzena());
+                id_aldatuDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
+                id_aldatuPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
+                id_aldatuPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
+                id_aldatuStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
+                id_aldatuIDPiezaMotaPieza.setDisable(false);
+                id_aldatuIDMakinaPieza.setDisable(false);
+                id_aldatuIzenaPieza.setDisable(false);
+                id_aldatuDeskribapenaPieza.setDisable(false);
+                id_aldatuPisuaPieza.setDisable(false);
+                id_aldatuPrezioaPieza.setDisable(false);
+                id_aldatuStockPieza.setDisable(false);
+            }
         });
         // Piezaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza existitzen den
@@ -1489,12 +1536,58 @@ public class MaltunaBrandController {
         id_aldatuStockPieza.setDisable(true);
     }
 
-
     @FXML
-    void piezaBilatuAldatun(ActionEvent event) {}
+    void piezaBilatuAldatun(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        String id_pieza_string = id_aldatuIDPieza.getText();
+        boolean piezaAurkitua = false;
 
+        try {
+            int id_pieza = Integer.parseInt(id_pieza_string);
+            ObservableList<pieza> piezak = piezaZerrenda();
+            for (pieza p : piezak) {
+                if (id_pieza == p.getId_pieza()) {
+                    id_aldatuIDPieza.setText(Integer.toString(p.getId_pieza()));
+                    id_aldatuIDPiezaMotaPieza.setText(Integer.toString(p.getId_pieza_mota()));
+                    id_aldatuIDMakinaPieza.setText(Integer.toString(p.getId_makina()));
+                    id_aldatuIzenaPieza.setText(p.getIzena());
+                    id_aldatuDeskribapenaPieza.setText(p.getDeskribapena());
+                    id_aldatuPisuaPieza.setText(Integer.toString(p.getPisua()));
+                    id_aldatuPrezioaPieza.setText(Double.toString(p.getPrezioa()));
+                    id_aldatuStockPieza.setText(Integer.toString(p.getStock()));
+                    id_aldatuIDPiezaMotaPieza.setDisable(false);
+                    id_aldatuIDMakinaPieza.setDisable(false);
+                    id_aldatuIzenaPieza.setDisable(false);
+                    id_aldatuDeskribapenaPieza.setDisable(false);
+                    id_aldatuPisuaPieza.setDisable(false);
+                    id_aldatuPrezioaPieza.setDisable(false);
+                    id_aldatuStockPieza.setDisable(false);
+                    piezaAurkitua = true;
+                    return;
+                }
+            }
+            if (!piezaAurkitua) {
+                alerta.setTitle("INFO");
+                alerta.setHeaderText(null);
+                alerta.setContentText(id_pieza + " ID dun pieza ez da datu basean aurkitzen!");
+                alerta.showAndWait();
+                id_aldatuIDPieza.setText("");
+                id_aldatuIDPiezaMotaPieza.setText("");
+                id_aldatuIDMakinaPieza.setText("");
+                id_aldatuIzenaPieza.setText("");
+                id_aldatuDeskribapenaPieza.setText("");
+                id_aldatuPisuaPieza.setText("");
+                id_aldatuPrezioaPieza.setText("");
+                id_aldatuStockPieza.setText("");
+            }
 
-    
+        } catch (NumberFormatException e) {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+            alerta.setContentText("Piezaren IDa zenbaki osoa izan behar da");
+            alerta.showAndWait();
+        }
+    }
 
     @FXML
     void zerrendatuPiezakPantaila(ActionEvent event) {
@@ -1839,8 +1932,10 @@ public class MaltunaBrandController {
         // Aukeratutako pieza mota jaso
         id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
                 .addListener((obs, aurrekoAukera, aukeraBerria) -> {
-                    id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-                    id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                    if (aukeraBerria != null) {
+                        id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                        id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                    }
                 });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
@@ -1997,9 +2092,11 @@ public class MaltunaBrandController {
         // Aukeratutako pieza mota jaso
         id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
                 .addListener((obs, aurrekoAukera, aukeraBerria) -> {
-                    id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-                    id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
-                    id_aldatuIzenaPiezaMota.setDisable(false);
+                    if (aukeraBerria != null) {
+                        id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                        id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                        id_aldatuIzenaPiezaMota.setDisable(false);
+                    }
                 });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
