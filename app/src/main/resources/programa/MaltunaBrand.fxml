@@ -565,8 +565,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Makina" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kenduIDMakina1" prefHeight="40.0" prefWidth="710.0" />
-                                                                  <Button fx:id="id_button_makinaErabiltzaileaBilatu1" mnemonicParsing="false" onAction="#makinaErabiltzaileaBilatuKendun" text="Bilatu" />
+                                                                  <TextField fx:id="id_kenduIDMakina1" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -604,8 +603,7 @@
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="ID Makina" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_aldatuIDMakina1" prefHeight="40.0" prefWidth="710.0" />
-                                                                  <Button fx:id="id_button_makinaErabiltzaileaBilatu3" mnemonicParsing="false" onAction="#makinaErabiltzaileaBilatuAldatun" text="Bilatu" />
+                                                                  <TextField fx:id="id_aldatuIDMakina1" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -620,7 +618,7 @@
                                                                   <DatePicker fx:id="id_aldatuAmaieraDataMakinaErabiltzailea" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
-                                                            <Button fx:id="id_aldatuMakinaErabiltzailea" mnemonicParsing="false" onAction="#aldatuMakinaErabiltzailea" styleClass="ezker_menua_botoia" text="Kendu" />
+                                                            <Button fx:id="id_aldatuMakinaErabiltzailea" mnemonicParsing="false" onAction="#aldatuMakinaErabiltzailea" styleClass="ezker_menua_botoia" text="Aldatu" />
                                                          </children>
                                                       </VBox>
                                                    </children>
