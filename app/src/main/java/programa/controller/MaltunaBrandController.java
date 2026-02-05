@@ -25,17 +25,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import programa.DBKonexioa;
 import programa.model.makina;
+import programa.model.pieza;
 import programa.model.piezaMota;
-
-
-
-
 
 public class MaltunaBrandController {
 
-//********************************************************************************************************************  
-//                                                     MAKINA  
-//********************************************************************************************************************
+    // ********************************************************************************************************************
+    // MAKINA
+    // ********************************************************************************************************************
     @FXML
     private TextArea id_aldatuDeskribapenaMakina;
     @FXML
@@ -632,21 +629,19 @@ public class MaltunaBrandController {
         }
     }
 
-
     @FXML
-    void zerrendatuMakinakPantaila(ActionEvent event) {        
+    void zerrendatuMakinakPantaila(ActionEvent event) {
         id_imageMakina.setVisible(false);
         id_makinaKenduPantaila.setVisible(false);
         id_makinaAldatuPantaila.setVisible(false);
         id_makinaGehituPantaila.setVisible(false);
         id_makinaZerrendatuPantaila.setVisible(true);
         id_makinaInfoPantaila.setVisible(false);
-        
+
         // Makinen zerrenda bistaratu:
         ObservableList<makina> makinak = makinaZerrenda();
         id_makinaZerrenda1.setItems(makinak);
     }
-
 
     public ObservableList<makina> makinaZerrenda() {
 
@@ -706,11 +701,9 @@ public class MaltunaBrandController {
         return makinak;
     }
 
-//********************************************************************************************************************  
-//                                                     ERABILTZAILEA  
-//********************************************************************************************************************
-
-
+    // ********************************************************************************************************************
+    // ERABILTZAILEA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuErabiltzailea;
@@ -745,7 +738,7 @@ public class MaltunaBrandController {
     @FXML
     private Button id_gehituErabiltzailea;
     @FXML
-    private TitledPane id_erbiltzaileaGehituPantaila;   
+    private TitledPane id_erbiltzaileaGehituPantaila;
     @FXML
     private TextField id_kenduIDErabiltzailea;
     @FXML
@@ -806,33 +799,35 @@ public class MaltunaBrandController {
     @FXML
     void gehituErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void gehituErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void kenduErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void kenduErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void aldatuErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void aldatuErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void zerrendatuErabiltzaileakPantaila(ActionEvent event) {
     }
-    
 
+    // ********************************************************************************************************************
+    // PIEZA
+    // ********************************************************************************************************************
 
-
-
-//********************************************************************************************************************  
-//                                                     PIEZA  
-//********************************************************************************************************************
-    
     @FXML
     private VBox id_ezkerMenua_pieza;
     @FXML
@@ -864,7 +859,7 @@ public class MaltunaBrandController {
     @FXML
     private Button id_gehituPieza;
     @FXML
-    private TitledPane id_piezaGehituPantaila;   
+    private TitledPane id_piezaGehituPantaila;
     @FXML
     private TextField id_kenduIDPieza;
     @FXML
@@ -876,7 +871,7 @@ public class MaltunaBrandController {
     @FXML
     private TextArea id_kenduDeskribapenaPieza;
     @FXML
-    private TextField id_kendPisuaPieza;
+    private TextField id_kenduPisuaPieza;
     @FXML
     private TextField id_kenduPrezioaPieza;
     @FXML
@@ -884,7 +879,7 @@ public class MaltunaBrandController {
     @FXML
     private Button id_kenduPieza;
     @FXML
-    private TitledPane id_piezaKenduPantaila;    
+    private TitledPane id_piezaKenduPantaila;
     @FXML
     private TextField id_aldatuIDPieza;
     @FXML
@@ -904,13 +899,13 @@ public class MaltunaBrandController {
     @FXML
     private Button id_aldatuPieza;
     @FXML
-    private TitledPane id_PiezaAldatuPantaila;
-     @FXML
-    private TitledPane id_PiezaZerrendatuPantaila;
+    private TitledPane id_piezaAldatuPantaila;
     @FXML
-    private ListView<makina> id_piezaZerrenda;
+    private TitledPane id_piezaZerrendatuPantaila;
     @FXML
-    private ListView<makina> id_piezaZerrenda1;
+    private ListView<pieza> id_piezaZerrenda;
+    @FXML
+    private ListView<pieza> id_piezaZerrenda1;
     @FXML
     private AnchorPane id_piezaInfoPantaila;
     @FXML
@@ -918,32 +913,650 @@ public class MaltunaBrandController {
 
     @FXML
     void gehituPiezaPantaila(ActionEvent event) {
+        id_imagePieza.setVisible(false);
+        id_piezaKenduPantaila.setVisible(false);
+        id_piezaAldatuPantaila.setVisible(false);
+        id_piezaGehituPantaila.setVisible(true);
+        id_piezaZerrendatuPantaila.setVisible(false);
+        id_label_piezaZerrenda.setVisible(false);
+        ObservableList<pieza> piezak = FXCollections.observableArrayList();
+        // Pantaila garbitu, textfieldak
+        id_piezaZerrenda.setItems(piezak);
+        id_sartuIDPieza.setText("");
+        id_sartuIDPiezaMotaPieza.setText("");
+        id_sartuIDMakinaPieza.setText("");
+        id_sartuIzenaPieza.setText("");
+        id_sartuDeskribapenaPieza.setText("");
+        id_sartuPisuaPieza.setText("");
+        id_sartuPrezioaPieza.setText("");
+        id_sartuStockPieza.setText("");
     }
+
     @FXML
     void gehituPieza(ActionEvent event) {
+        // escenetik makinaren datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean piezaTxertatua = false;
+        boolean piezaMotaSortuta = false;
+        boolean makinaSortuta = false;
+
+        String id_pieza = id_sartuIDPieza.getText();
+        String id_pieza_mota_string = id_sartuIDPiezaMotaPieza.getText();
+        String id_makina_string = id_sartuIDMakinaPieza.getText();
+        String izena = id_sartuIzenaPieza.getText();
+        String deskribapena = id_sartuDeskribapenaPieza.getText();
+        String pisua = id_sartuPisuaPieza.getText();
+        String prezioa_string = id_sartuPrezioaPieza.getText();
+        String stock = id_sartuStockPieza.getText();
+
+        if (!id_pieza.isEmpty() && !id_pieza_mota_string.isEmpty() && !id_makina_string.isEmpty()
+                && !izena.isEmpty() && !deskribapena.isEmpty() && !pisua.isEmpty() && !prezioa_string.isEmpty()
+                && !stock.isEmpty()) {
+            double prezioa = Integer.parseInt(prezioa_string);
+            int id_pieza_mota = Integer.parseInt(id_pieza_mota_string);
+            int id_makina = Integer.parseInt(id_makina_string);
+
+            ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
+            for (piezaMota pm : piezaMotak) {
+                if (id_pieza_mota == pm.getId_piezaMota()) {
+                    piezaMotaSortuta = true;
+                    break;
+                }
+            }
+
+            ObservableList<makina> makinak = makinaZerrenda();
+            for (makina m : makinak) {
+                if (id_makina == m.getId()) {
+                    makinaSortuta = true;
+                    break;
+                }
+            }
+            if (prezioa >= 1000) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu prezioa 1000 baino txikiagoa dela!");
+                alerta.showAndWait();
+            } else if (!piezaMotaSortuta) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu pieza mota existitzen dela!");
+                alerta.showAndWait();
+            } else if (!makinaSortuta) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu makina existitzen dela!");
+                alerta.showAndWait();
+            } else {
+                try {
+                    pieza piezaBerria = new pieza(Integer.parseInt(id_pieza), id_pieza_mota,
+                            id_makina, izena, deskribapena, Integer.parseInt(pisua),
+                            prezioa, Integer.parseInt(stock));
+                    // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                    // kudeatzeko.
+                    DBKonexioa dataBkonexioa = new DBKonexioa();
+
+                    try {
+                        // konektatu() metodoari deitzen zaio.
+                        // Metodo honek Connection motako objektu bat itzultzen du,
+                        // eta SQLException jaurtitzen du errorea gertatzen bada.
+                        Connection konexioa = dataBkonexioa.konektatu();
+                        // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                        if (konexioa != null && !konexioa.isClosed()) {
+                            System.out.println("Komunikazio kanala irekita dago.");
+                            // **INSERT INTO PIEZA** SQL kontsulta prestatzen da
+                            String kontsulta = "INSERT INTO PIEZA VALUES(?,?,?,?,?,?,?,?)";
+                            PreparedStatement agindua = konexioa.prepareStatement(kontsulta);
+
+                            // Parametroak prestatzen dira, bakoitza dagokion zutabera sartzeko
+                            agindua.setInt(1, piezaBerria.getId_pieza());
+                            agindua.setInt(2, piezaBerria.getId_pieza_mota());
+                            agindua.setInt(3, piezaBerria.getId_makina());
+                            agindua.setString(4, piezaBerria.getIzena());
+                            agindua.setString(5, piezaBerria.getDeskribapena());
+                            agindua.setInt(6, piezaBerria.getPisua());
+                            agindua.setDouble(7, piezaBerria.getPrezioa());
+                            agindua.setInt(8, piezaBerria.getStock());
+
+                            // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                            // executeUpdate() metodoak 1 itzultzen du, kontsulta ondo exekutatzen bada.
+                            int emaitza = agindua.executeUpdate();
+
+                            if (emaitza == 1) {
+                                System.out.println("Pieza berria datu basean txertatu da");
+                                piezaTxertatua = true;
+                            }
+                            // Datu-basearekin konektatutako kanala itxi egiten da,
+                            // memoria eta baliabideak askatzeko.
+                            konexioa.close();
+                        }
+
+                    } catch (SQLException e) {
+                        // Salbuespen bat sortzen da SQL aginduak exekutatzen direnean errore bat
+                        // gertatuz gero.
+                        // Adibidez, datuak sartzeko parametroak okerrak izan daitezke edo taula ez
+                        // egon.
+                        System.out.println("Errorea piezaren datuak sortzean.");
+                        e.printStackTrace(); // Errorea aztertzeko informazioa bistaratzeko
+                    }
+
+                    if (piezaTxertatua) {
+                        alerta.setTitle("INFO");
+                        alerta.setHeaderText(null);
+                        alerta.setContentText("Pieza berria txertatuta!");
+                        alerta.showAndWait();
+                        id_label_piezaZerrenda.setVisible(true);
+                        ObservableList<pieza> piezak = piezaZerrenda();
+                        id_piezaZerrenda.setItems(piezak);
+                        id_piezaInfoPantaila.setVisible(true);
+                    } else {
+                        alerta.setTitle("ADI !");
+                        alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                        alerta.setContentText("Ezin izan da pieza berria datu basean txertatu");
+                        alerta.showAndWait();
+                    }
+                } catch (NumberFormatException e) {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                    alerta.setContentText(
+                            "Piezaren IDak, pisua eta stock-a zenbaki osoak, eta prezioa\nzenbaki hamartarra izan behar dira");
+                    alerta.showAndWait();
+                }
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_sartuIDPieza.setText("");
+        id_sartuIDPiezaMotaPieza.setText("");
+        id_sartuIDMakinaPieza.setText("");
+        id_sartuIzenaPieza.setText("");
+        id_sartuDeskribapenaPieza.setText("");
+        id_sartuPisuaPieza.setText("");
+        id_sartuPrezioaPieza.setText("");
+        id_sartuStockPieza.setText("");
     }
+
     @FXML
     void kenduPiezaPantaila(ActionEvent event) {
+        id_imagePieza.setVisible(false);
+        id_piezaKenduPantaila.setVisible(true);
+        id_piezaAldatuPantaila.setVisible(false);
+        id_piezaGehituPantaila.setVisible(false);
+        id_piezaZerrendatuPantaila.setVisible(false);
+        id_piezaInfoPantaila.setVisible(true);
+        // Pantaila garbitu, textfieldak
+        id_kenduIDPieza.setText("");
+        id_kenduIDPiezaMotaPieza.setText("");
+        id_kenduIDMakinaPieza.setText("");
+        id_kenduIzenaPieza.setText("");
+        id_kenduDeskribapenaPieza.setText("");
+        id_kenduPisuaPieza.setText("");
+        id_kenduPrezioaPieza.setText("");
+        id_kenduStockPieza.setText("");
+        // Sarreran ez utzi idazten usuarioari
+        // id_kenduIDPieza.setDisable(true);
+        id_kenduIDPiezaMotaPieza.setDisable(true);
+        id_kenduIDMakinaPieza.setDisable(true);
+        id_kenduIzenaPieza.setDisable(true);
+        id_kenduDeskribapenaPieza.setDisable(true);
+        id_kenduPisuaPieza.setDisable(true);
+        id_kenduPrezioaPieza.setDisable(true);
+        id_kenduStockPieza.setDisable(true);
+        // Piezen zerrenda bistaratu:
+        id_label_piezaZerrenda.setVisible(true);
+        ObservableList<pieza> piezak = piezaZerrenda();
+        id_piezaZerrenda.setItems(piezak);
+        // Aukeratutako pieza jaso
+        id_piezaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
+            id_kenduIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
+            id_kenduIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
+            id_kenduIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
+            id_kenduIzenaPieza.setText(aukeraBerria.getIzena());
+            id_kenduDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
+            id_kenduPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
+            id_kenduPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
+            id_kenduStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
+        });
+        // Piezaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
+        // pieza existitzen den
+        id_kenduIDPieza.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_kenduIDPieza textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_kenduIDPieza.setText("");
+                id_kenduIDPiezaMotaPieza.setText("");
+                id_kenduIDMakinaPieza.setText("");
+                id_kenduIzenaPieza.setText("");
+                id_kenduDeskribapenaPieza.setText("");
+                id_kenduPisuaPieza.setText("");
+                id_kenduPrezioaPieza.setText("");
+                id_kenduStockPieza.setText("");
+            }
+        });
     }
+
     @FXML
     void kenduPieza(ActionEvent event) {
+        // escenetik makinaren datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean piezaEzabatua = false;
+
+        String id_pieza = id_kenduIDPieza.getText();
+        String id_pieza_mota = id_kenduIDPiezaMotaPieza.getText();
+        String id_makina = id_kenduIDMakinaPieza.getText();
+        String izena = id_kenduIzenaPieza.getText();
+        String deskribapena = id_kenduDeskribapenaPieza.getText();
+        String pisua = id_kenduPisuaPieza.getText();
+        String prezioa = id_kenduPrezioaPieza.getText();
+        String stock = id_kenduStockPieza.getText();
+
+        if (!id_pieza.isEmpty() && !id_pieza_mota.isEmpty() && !id_makina.isEmpty()
+                && !izena.isEmpty() && !deskribapena.isEmpty() && !pisua.isEmpty() && !prezioa.isEmpty()
+                && !stock.isEmpty()) {
+            try {
+                pieza kentzekoPieza = new pieza(Integer.parseInt(id_pieza), Integer.parseInt(id_pieza_mota),
+                        Integer.parseInt(id_makina), izena, deskribapena, Integer.parseInt(pisua),
+                        Double.parseDouble(prezioa), Integer.parseInt(stock));
+                // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                // kudeatzeko.
+                DBKonexioa dataBkonexioa = new DBKonexioa();
+                try {
+                    // konektatu() metodoari deitzen zaio.
+                    // Metodo honek Connection motako objektu bat itzultzen du,
+                    // eta SQLException jaurtitzen du errorea gertatzen bada.
+                    Connection cn = dataBkonexioa.konektatu();
+
+                    // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                    // "cn != null" konexioaren balio egokia den ziurtatzeko
+                    // eta "cn.isClosed()" konexioa irekita dagoen egiaztatzeko.
+                    if (cn != null && !cn.isClosed()) {
+                        System.out.println("Komunikazio kanala irekita dago.");
+
+                        // **DELETE FROM PIEZA** SQL kontsulta prestatzen da.
+                        String kontsulta = "DELETE FROM PIEZA WHERE ID_PIEZA = ?";
+                        PreparedStatement agindua = cn.prepareStatement(kontsulta);
+
+                        // Parametroa prestatzen da, "id_pieza" balioa sartzeko.
+                        agindua.setInt(1, kentzekoPieza.getId_pieza());
+
+                        // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                        // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
+                        // den adieraziz.
+                        int emaitza = agindua.executeUpdate();
+
+                        // Emaitza balioztatu egiten da:
+                        // 0 itzultzen bada, ez da inongo langilerik ezabatu.
+                        // > 0 itzultzen bada, **langilea ezabatu dela** adierazten du.
+                        if (emaitza > 0) {
+                            System.out.println("Pieza ezabatu da");
+                            piezaEzabatua = true;
+                        }
+
+                        // Datu-basearekin konektatutako kanala itxi egiten da,
+                        // memoria eta baliabideak askatzeko.
+                        cn.close();
+                        System.out.println("Konexioa itxi da.");
+                    }
+                } catch (SQLException e) {
+                    // SQL agindua exekutatzen edo konexioa egitean errore bat gertatzen bada,
+                    // salbuespena jasotzen da.
+                    System.out.println("Errorea piezaren datuak ezabatzean.");
+                    e.printStackTrace();
+                }
+                if (piezaEzabatua) {
+                    alerta.setTitle("INFO");
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Pieza ezabatu da datu basetik!");
+                    alerta.showAndWait();
+                    id_label_piezaZerrenda.setVisible(true);
+                    ObservableList<pieza> piezak = piezaZerrenda();
+                    id_piezaZerrenda.setItems(piezak);
+                } else {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                    alerta.setContentText("Ezin izan da pieza ezabatu");
+                    alerta.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                alerta.setContentText(
+                        "Piezaren IDak, pisua eta stock-a zenbaki osoak, eta prezioa\nzenbaki hamartarra izan behar dira");
+                alerta.showAndWait();
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_kenduIDPieza.setText("");
+        id_kenduIDPiezaMotaPieza.setText("");
+        id_kenduIDMakinaPieza.setText("");
+        id_kenduIzenaPieza.setText("");
+        id_kenduDeskribapenaPieza.setText("");
+        id_kenduPisuaPieza.setText("");
+        id_kenduPrezioaPieza.setText("");
+        id_kenduStockPieza.setText("");
     }
+
     @FXML
     void aldatuPiezaPantaila(ActionEvent event) {
+        id_imagePieza.setVisible(false);
+        id_piezaKenduPantaila.setVisible(false);
+        id_piezaAldatuPantaila.setVisible(true);
+        id_piezaGehituPantaila.setVisible(false);
+        id_piezaZerrendatuPantaila.setVisible(false);
+        id_piezaInfoPantaila.setVisible(true);
+        // Pantaila garbitu, textfieldak
+        id_aldatuIDPieza.setText("");
+        id_aldatuIDPiezaMotaPieza.setText("");
+        id_aldatuIDMakinaPieza.setText("");
+        id_aldatuIzenaPieza.setText("");
+        id_aldatuDeskribapenaPieza.setText("");
+        id_aldatuPisuaPieza.setText("");
+        id_aldatuPrezioaPieza.setText("");
+        id_aldatuStockPieza.setText("");
+        // Sarreran ez utzi idazten usuarioari
+        // id_aldatuIDPieza.setDisable(true);
+        id_aldatuIDPiezaMotaPieza.setDisable(true);
+        id_aldatuIDMakinaPieza.setDisable(true);
+        id_aldatuIzenaPieza.setDisable(true);
+        id_aldatuDeskribapenaPieza.setDisable(true);
+        id_aldatuPisuaPieza.setDisable(true);
+        id_aldatuPrezioaPieza.setDisable(true);
+        id_aldatuStockPieza.setDisable(true);
+        // Piezen zerrenda bistaratu:
+        id_label_piezaZerrenda.setVisible(true);
+        ObservableList<pieza> piezak = piezaZerrenda();
+        id_piezaZerrenda.setItems(piezak);
+        // Aukeratutako pieza jaso
+        id_piezaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
+            id_aldatuIDPieza.setText(Integer.toString(aukeraBerria.getId_pieza()));
+            id_aldatuIDPiezaMotaPieza.setText(Integer.toString(aukeraBerria.getId_pieza_mota()));
+            id_aldatuIDMakinaPieza.setText(Integer.toString(aukeraBerria.getId_makina()));
+            id_aldatuIzenaPieza.setText(aukeraBerria.getIzena());
+            id_aldatuDeskribapenaPieza.setText(aukeraBerria.getDeskribapena());
+            id_aldatuPisuaPieza.setText(Integer.toString(aukeraBerria.getPisua()));
+            id_aldatuPrezioaPieza.setText(Double.toString(aukeraBerria.getPrezioa()));
+            id_aldatuStockPieza.setText(Integer.toString(aukeraBerria.getStock()));
+            id_aldatuIDPiezaMotaPieza.setDisable(false);
+            id_aldatuIDMakinaPieza.setDisable(false);
+            id_aldatuIzenaPieza.setDisable(false);
+            id_aldatuDeskribapenaPieza.setDisable(false);
+            id_aldatuPisuaPieza.setDisable(false);
+            id_aldatuPrezioaPieza.setDisable(false);
+            id_aldatuStockPieza.setDisable(false);
+        });
+        // Piezaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
+        // pieza existitzen den
+        id_aldatuIDPieza.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_kenduIDPieza textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_aldatuIDPieza.setText("");
+                id_aldatuIDPiezaMotaPieza.setText("");
+                id_aldatuIDMakinaPieza.setText("");
+                id_aldatuIzenaPieza.setText("");
+                id_aldatuDeskribapenaPieza.setText("");
+                id_aldatuPisuaPieza.setText("");
+                id_aldatuPrezioaPieza.setText("");
+                id_aldatuStockPieza.setText("");
+                id_aldatuIDPiezaMotaPieza.setDisable(true);
+                id_aldatuIDMakinaPieza.setDisable(true);
+                id_aldatuIzenaPieza.setDisable(true);
+                id_aldatuDeskribapenaPieza.setDisable(true);
+                id_aldatuPisuaPieza.setDisable(true);
+                id_aldatuPrezioaPieza.setDisable(true);
+                id_aldatuStockPieza.setDisable(true);
+            }
+        });
     }
+
     @FXML
     void aldatuPieza(ActionEvent event) {
+        // escenetik makinaren datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean piezaAldatuta = false;
+        boolean piezaMotaSortuta = false;
+        boolean makinaSortuta = false;
+
+        String id_pieza = id_aldatuIDPieza.getText();
+        String id_pieza_mota_string = id_aldatuIDPiezaMotaPieza.getText();
+        String id_makina_string = id_aldatuIDMakinaPieza.getText();
+        String izena = id_aldatuIzenaPieza.getText();
+        String deskribapena = id_aldatuDeskribapenaPieza.getText();
+        String pisua = id_aldatuPisuaPieza.getText();
+        String prezioa_string = id_aldatuPrezioaPieza.getText();
+        String stock = id_aldatuStockPieza.getText();
+
+        if (!id_pieza.isEmpty() && !id_pieza_mota_string.isEmpty() && !id_makina_string.isEmpty()
+                && !izena.isEmpty() && !deskribapena.isEmpty() && !pisua.isEmpty() && !prezioa_string.isEmpty()
+                && !stock.isEmpty()) {
+            double prezioa = Double.parseDouble(prezioa_string);
+            int id_pieza_mota = Integer.parseInt(id_pieza_mota_string);
+            int id_makina = Integer.parseInt(id_makina_string);
+
+            ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
+            for (piezaMota pm : piezaMotak) {
+                if (id_pieza_mota == pm.getId_piezaMota()) {
+                    piezaMotaSortuta = true;
+                    break;
+                }
+            }
+
+            ObservableList<makina> makinak = makinaZerrenda();
+            for (makina m : makinak) {
+                if (id_makina == m.getId()) {
+                    makinaSortuta = true;
+                    break;
+                }
+            }
+
+            if (prezioa >= 1000) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu prezioa 1000 baino txikiagoa dela!");
+                alerta.showAndWait();
+            } else if (!piezaMotaSortuta) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu pieza mota existitzen dela!");
+                alerta.showAndWait();
+            } else if (!makinaSortuta) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Ziurtatu makina existitzen dela!");
+                alerta.showAndWait();
+            } else {
+                try {
+                    pieza aldatzekoPieza = new pieza(Integer.parseInt(id_pieza), id_pieza_mota,
+                            id_makina, izena, deskribapena, Integer.parseInt(pisua),
+                            prezioa, Integer.parseInt(stock));
+                    // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                    // kudeatzeko.
+                    DBKonexioa dataBkonexioa = new DBKonexioa();
+                    try {
+                        // konektatu() metodoari deitzen zaio.
+                        // Metodo honek Connection motako objektu bat itzultzen du,
+                        // eta SQLException jaurtitzen du errorea gertatzen bada.
+                        Connection cn = dataBkonexioa.konektatu();
+
+                        // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                        // "cn != null" konexioaren balio egokia den ziurtatzeko
+                        // eta "cn.isClosed()" konexioa irekita dagoen egiaztatzeko.
+                        if (cn != null && !cn.isClosed()) {
+                            System.out.println("Komunikazio kanala irekita dago.");
+
+                            // **UPDATE PIEZA** SQL kontsulta prestatzen da.
+                            String kontsulta = "UPDATE PIEZA SET ID_PIEZA_MOTA=?, ID_MAKINA=?, IZENA=?, DESKRIBAPENA=?, PISUA=?, PREZIOA=?, STOCK=? WHERE ID_PIEZA = ?";
+                            PreparedStatement agindua = cn.prepareStatement(kontsulta);
+
+                            // Parametroa prestatzen da, "id_pieza" balioa sartzeko.
+                            agindua.setInt(1, aldatzekoPieza.getId_pieza_mota());
+                            agindua.setInt(2, aldatzekoPieza.getId_makina());
+                            agindua.setString(3, aldatzekoPieza.getIzena());
+                            agindua.setString(4, aldatzekoPieza.getDeskribapena());
+                            agindua.setInt(5, aldatzekoPieza.getPisua());
+                            agindua.setDouble(6, aldatzekoPieza.getPrezioa());
+                            agindua.setInt(7, aldatzekoPieza.getStock());
+                            agindua.setInt(8, aldatzekoPieza.getId_pieza());
+
+                            // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                            // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
+                            // den adieraziz.
+                            int emaitza = agindua.executeUpdate();
+
+                            // Emaitza balioztatu egiten da:
+                            // 0 itzultzen bada, ez da inongo langilerik ezabatu.
+                            // > 0 itzultzen bada, **langilea ezabatu dela** adierazten du.
+                            if (emaitza > 0) {
+                                System.out.println("Pieza aldatu da");
+                                piezaAldatuta = true;
+                            }
+
+                            // Datu-basearekin konektatutako kanala itxi egiten da,
+                            // memoria eta baliabideak askatzeko.
+                            cn.close();
+                            System.out.println("Konexioa itxi da.");
+                        }
+                    } catch (SQLException e) {
+                        // SQL agindua exekutatzen edo konexioa egitean errore bat gertatzen bada,
+                        // salbuespena jasotzen da.
+                        System.out.println("Errorea piezaren datuak ezabatzean.");
+                        e.printStackTrace();
+                    }
+                    if (piezaAldatuta) {
+                        alerta.setTitle("INFO");
+                        alerta.setHeaderText(null);
+                        alerta.setContentText("Pieza aldatu da!");
+                        alerta.showAndWait();
+                        id_label_piezaZerrenda.setVisible(true);
+                        ObservableList<pieza> piezak = piezaZerrenda();
+                        id_piezaZerrenda.setItems(piezak);
+                    } else {
+                        alerta.setTitle("ADI !");
+                        alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                        alerta.setContentText("Ezin izan da pieza ezabatu");
+                        alerta.showAndWait();
+                    }
+                } catch (NumberFormatException e) {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                    alerta.setContentText(
+                            "Piezaren IDak, pisua eta stock-a zenbaki osoak, eta prezioa\nzenbaki hamartarra izan behar dira");
+                    alerta.showAndWait();
+                }
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_aldatuIDPieza.setText("");
+        id_aldatuIDPiezaMotaPieza.setText("");
+        id_aldatuIDMakinaPieza.setText("");
+        id_aldatuIzenaPieza.setText("");
+        id_aldatuDeskribapenaPieza.setText("");
+        id_aldatuPisuaPieza.setText("");
+        id_aldatuPrezioaPieza.setText("");
+        id_aldatuStockPieza.setText("");
+        id_aldatuIDPiezaMotaPieza.setDisable(true);
+        id_aldatuIDMakinaPieza.setDisable(true);
+        id_aldatuIzenaPieza.setDisable(true);
+        id_aldatuDeskribapenaPieza.setDisable(true);
+        id_aldatuPisuaPieza.setDisable(true);
+        id_aldatuPrezioaPieza.setDisable(true);
+        id_aldatuStockPieza.setDisable(true);
     }
+
     @FXML
     void zerrendatuPiezakPantaila(ActionEvent event) {
+        id_imagePieza.setVisible(false);
+        id_piezaKenduPantaila.setVisible(false);
+        id_piezaAldatuPantaila.setVisible(false);
+        id_piezaGehituPantaila.setVisible(false);
+        id_piezaZerrendatuPantaila.setVisible(true);
+        id_piezaInfoPantaila.setVisible(false);
+
+        // Piezen zerrenda bistaratu:
+        ObservableList<pieza> piezak = piezaZerrenda();
+        id_piezaZerrenda1.setItems(piezak);
     }
-    
 
+    public ObservableList<pieza> piezaZerrenda() {
+        ObservableList<pieza> piezak = FXCollections.observableArrayList();
 
-//********************************************************************************************************************  
-//                                                    MAKINA - ERABILTZAILEA  
-//********************************************************************************************************************
+        // DBKonexioa klaseko objektu bat sortzen da,
+        // datu-basearekin konexioa kudeatzeko.
+        DBKonexioa konex = new DBKonexioa();
 
+        try {
+            // konektatu() metodoari deitzen zaio.
+            // Metodo honek Connection motako objektu bat bueltatzen du,
+            // eta SQLException jaurti dezake errorea gertatzen bada.
+            Connection cn = konex.konektatu();
+
+            // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+            if (cn != null && !cn.isClosed()) {
+                System.out.println("Komunikazio kanala irekita dago.");
+
+                // PreparedStatement: SQL kontsulta bat prestatzen du
+                // eta exekutatzeko prest dagoen objektu bat sortzen da.
+                // "Prepared" deitzen da, izan ere, SQL aginduak lehenago prestatu etaondoren
+                // exekutatzen direlako.
+                // String motako kontsulta aldagaian "SELECT ID_MAKINA, IZENA, DESKRIBAPENA,
+                // POTENTZIA, INSTALAKUNTZA_DATA FROM MAKINA" agindua gordetzen da
+                String kontsulta = "SELECT * FROM PIEZA";
+                // Adierazitako kontsulta prestatzen da
+                PreparedStatement agindua = cn.prepareStatement(kontsulta);
+                // Prestatutako kontsulta exekutatzen da
+                ResultSet emaitza = agindua.executeQuery();
+
+                // ResultSet: SQL kontsultaren emaitzak jasotzen ditu.
+                // "ResultSet" objektuak datu-baseko erantzunaren edukia gordetzen du.
+                while (emaitza.next()) { // next() metodoak hurrengo errenkadako balioak irakurtzen ditu.
+                    // piezaren id: "id_pieza" zutabean dagoen balioa irakurriko da
+                    // makina izena: "izena" zutabean dagoen balioa irakurriko da
+                    // makina deskribapena: "deskribapena" zutabean dagoen balioa irakurriko da
+                    // makina potentzia: "potentzia" zutabean dagoen balioa irakurriko da
+                    // makina instalakuntzaData: "instalakuntza_data" zutabean dagoen balioa
+                    // irakurriko da
+                    pieza irakurritakoPieza = new pieza(emaitza.getInt("id_pieza"), emaitza.getInt("id_pieza_mota"),
+                            emaitza.getInt("id_makina"),
+                            emaitza.getString("izena"),
+                            emaitza.getString("deskribapena"), emaitza.getInt("pisua"),
+                            emaitza.getDouble("prezioa"),
+                            emaitza.getInt("stock"));
+                    piezak.add(irakurritakoPieza);
+                }
+                // ResultSet objektua itxi egiten da, memoria baliabideak askatuz.
+                emaitza.close();
+                // Datu-basearekiko konexioa itxi egiten da.
+                cn.close();
+                System.out.println("Konexioa itxi da.");
+            }
+        } catch (SQLException e) {
+            // Salbuespena harrapatzen da kontsultan edo konexioan
+            // arazoren bat gertatu bada.
+            System.out.println("Errorea kontsulta exekutatzean");
+            e.printStackTrace();
+        }
+
+        return piezak;
+    }
+
+    // ********************************************************************************************************************
+    // MAKINA - ERABILTZAILEA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuMakinaErabiltzailea;
@@ -964,15 +1577,15 @@ public class MaltunaBrandController {
     @FXML
     private DatePicker id_sartuHasieraDataMakinaErabiltzailea;
     @FXML
-    private DatePicker id_sartuAmaieraDataMakinaErabiltzailea;    
+    private DatePicker id_sartuAmaieraDataMakinaErabiltzailea;
     @FXML
     private Button id_gehituMakinaErabiltzailea;
     @FXML
-    private TitledPane id_makinaErabiltzaileaGehituPantaila;   
+    private TitledPane id_makinaErabiltzaileaGehituPantaila;
     @FXML
     private TextField id_kenduIDErabiltzailea1;
     @FXML
-    private TextField id_kenduIDMakina1;    
+    private TextField id_kenduIDMakina1;
     @FXML
     private DatePicker id_kenduHasieraDataMakinaErabiltzailea;
     @FXML
@@ -1007,33 +1620,34 @@ public class MaltunaBrandController {
     @FXML
     void gehituMakinaErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void gehituMakinaErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void kenduMakinaErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void kenduMakinaErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void aldatuMakinaErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void aldatuMakinaErabiltzailea(ActionEvent event) {
     }
+
     @FXML
     void zerrendatuMakinaErabiltzaileakPantaila(ActionEvent event) {
     }
-    
 
-
-    
-
-//********************************************************************************************************************  
-//                                                    PIEZA MOTA  
-//********************************************************************************************************************
-
+    // ********************************************************************************************************************
+    // PIEZA MOTA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuPiezaMota;
@@ -1050,11 +1664,11 @@ public class MaltunaBrandController {
     @FXML
     private TextField id_sartuIzenaPiezaMota;
     @FXML
-    private TextField id_sartuIDPiezaMota;   
+    private TextField id_sartuIDPiezaMota;
     @FXML
     private Button id_gehituPiezaMota;
     @FXML
-    private TitledPane id_piezaMotaGehituPantaila;   
+    private TitledPane id_piezaMotaGehituPantaila;
     @FXML
     private TextField id_kenduIDPiezaMota;
     @FXML
@@ -1085,10 +1699,6 @@ public class MaltunaBrandController {
     private Button id_button_piezaMotaBilatu;
     @FXML
     private Button id_button_piezaMotaBilatu1;
-    
-    
-
-
 
     @FXML
     void gehituPiezaMotaPantaila(ActionEvent event) {
@@ -1104,6 +1714,7 @@ public class MaltunaBrandController {
         id_piezaMotaZerrenda.setItems(piezaMotak);
         id_sartuIzenaPiezaMota.setText("");
     }
+
     @FXML
     void gehituPiezaMota(ActionEvent event) {
         // escenetik pieza motaren datuak jaso
@@ -1111,7 +1722,7 @@ public class MaltunaBrandController {
         boolean piezaMotaTxertatua = false;
         String id = id_sartuIDPiezaMota.getText();
         String izena = id_sartuIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // piezaMotaBerria objetua sortu
@@ -1190,9 +1801,6 @@ public class MaltunaBrandController {
         id_sartuIzenaPiezaMota.setText("");
     }
 
-
-
-
     @FXML
     void kenduPiezaMotaPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1211,10 +1819,11 @@ public class MaltunaBrandController {
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda.setItems(piezaMotak);
         // Aukeratutako pieza mota jaso
-        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-            id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
-        });
+        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                    id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
         id_kenduIDPiezaMota.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
@@ -1228,18 +1837,14 @@ public class MaltunaBrandController {
         });
     }
 
-
-
-
-
     @FXML
     void kenduPiezaMota(ActionEvent event) {
-         // escenetik makinaren datuak jaso
+        // escenetik makinaren datuak jaso
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         boolean piezaMotaEzabatua = false;
         String id = id_kenduIDPiezaMota.getText();
         String izena = id_kenduIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // piezaMotaBerria objetua sortu
@@ -1323,9 +1928,6 @@ public class MaltunaBrandController {
         id_kenduIzenaPiezaMota.setText("");
     }
 
-
-    
-
     @FXML
     void piezaMotaBilatuKendun(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -1357,9 +1959,6 @@ public class MaltunaBrandController {
         }
     }
 
-
-
-
     @FXML
     void aldatuPiezaMotaPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1378,11 +1977,12 @@ public class MaltunaBrandController {
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda.setItems(piezaMotak);
         // Aukeratutako pieza mota jaso
-        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-            id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
-            id_aldatuIzenaPiezaMota.setDisable(false);
-        });
+        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                    id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                    id_aldatuIzenaPiezaMota.setDisable(false);
+                });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
         id_aldatuIDPiezaMota.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
@@ -1397,9 +1997,6 @@ public class MaltunaBrandController {
         });
     }
 
-
-
-
     @FXML
     void aldatuPiezaMota(ActionEvent event) {
         // escenetik pieza motaren datuak jaso
@@ -1407,7 +2004,7 @@ public class MaltunaBrandController {
         boolean piezaMotaAldatuta = false;
         String id = id_aldatuIDPiezaMota.getText();
         String izena = id_aldatuIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // aldatzekoPiezaMota objetua sortu
@@ -1433,10 +2030,9 @@ public class MaltunaBrandController {
                         String kontsulta = "UPDATE PIEZA_MOTA SET IZENA=? WHERE ID_PIEZA_MOTA=?";
                         PreparedStatement agindua = cn.prepareStatement(kontsulta);
 
-                        // Parametroak prestatzen dira, balioaksartzeko.                        
+                        // Parametroak prestatzen dira, balioaksartzeko.
                         agindua.setString(1, aldatzekoPiezaMota.getIzena());
                         agindua.setInt(2, aldatzekoPiezaMota.getId_piezaMota());
-
 
                         // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
                         // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
@@ -1494,9 +2090,6 @@ public class MaltunaBrandController {
         id_aldatuIzenaPiezaMota.setDisable(true);
     }
 
-
-
-
     @FXML
     void piezaMotaBilatuAldatun(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -1529,9 +2122,6 @@ public class MaltunaBrandController {
         }
     }
 
-
-
-
     @FXML
     void zerrendatuPiezaMotakPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1540,14 +2130,11 @@ public class MaltunaBrandController {
         id_piezaMotaGehituPantaila.setVisible(false);
         id_piezaMotaZerrendatuPantaila.setVisible(true);
         id_piezaMotaInfoPantaila.setVisible(false);
-        
+
         // Makinen zerrenda bistaratu:
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda1.setItems(piezaMotak);
     }
-    
-
-
 
     public ObservableList<piezaMota> piezaMotaZerrenda() {
         ObservableList<piezaMota> piezaMotak = FXCollections.observableArrayList();
@@ -1586,7 +2173,8 @@ public class MaltunaBrandController {
                     // makina potentzia: "potentzia" zutabean dagoen balioa irakurriko da
                     // makina instalakuntzaData: "instalakuntza_data" zutabean dagoen balioa
                     // irakurriko da
-                    piezaMota irakurritakoPiezaMota = new piezaMota(emaitza.getInt("id_pieza_mota"), emaitza.getString("izena"));
+                    piezaMota irakurritakoPiezaMota = new piezaMota(emaitza.getInt("id_pieza_mota"),
+                            emaitza.getString("izena"));
                     piezaMotak.add(irakurritakoPiezaMota);
                 }
                 // ResultSet objektua itxi egiten da, memoria baliabideak askatuz.
@@ -1603,4 +2191,5 @@ public class MaltunaBrandController {
         }
         return piezaMotak;
     }
+
 }

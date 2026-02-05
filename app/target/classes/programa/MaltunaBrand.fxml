@@ -779,7 +779,7 @@
                                                             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="253.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
                                                                <children>
                                                                   <Label text="Pisua" textAlignment="RIGHT" HBox.hgrow="ALWAYS" />
-                                                                  <TextField fx:id="id_kendPisuaPieza" prefHeight="40.0" prefWidth="800.0" />
+                                                                  <TextField fx:id="id_kenduPisuaPieza" prefHeight="40.0" prefWidth="800.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="500.0" prefHeight="42.0" prefWidth="506.0" spacing="20.0">
@@ -801,7 +801,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </TitledPane>
-                                          <TitledPane fx:id="id_PiezaAldatuPantaila" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Pieaza aldatu - Aukeratu ezazu beheko zerrendan aldatu nahi duzun pieza edo bere IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TitledPane fx:id="id_piezaAldatuPantaila" animated="false" layoutX="10.0" layoutY="10.0" prefHeight="510.4" prefWidth="658.4" text="Pieaza aldatu - Aukeratu ezazu beheko zerrendan aldatu nahi duzun pieza edo bere IDa sartu" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
