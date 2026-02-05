@@ -24,19 +24,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import programa.DBKonexioa;
+import programa.model.erabiltzailea;
 import programa.model.makina;
 import programa.model.makinaErabiltzailea;
 import programa.model.piezaMota;
 
-
-
-
-
 public class MaltunaBrandController {
 
-//********************************************************************************************************************  
-//                                                     MAKINA  
-//********************************************************************************************************************
+    // ********************************************************************************************************************
+    // MAKINA
+    // ********************************************************************************************************************
     @FXML
     private TextArea id_aldatuDeskribapenaMakina;
     @FXML
@@ -633,21 +630,19 @@ public class MaltunaBrandController {
         }
     }
 
-
     @FXML
-    void zerrendatuMakinakPantaila(ActionEvent event) {        
+    void zerrendatuMakinakPantaila(ActionEvent event) {
         id_imageMakina.setVisible(false);
         id_makinaKenduPantaila.setVisible(false);
         id_makinaAldatuPantaila.setVisible(false);
         id_makinaGehituPantaila.setVisible(false);
         id_makinaZerrendatuPantaila.setVisible(true);
         id_makinaInfoPantaila.setVisible(false);
-        
+
         // Makinen zerrenda bistaratu:
         ObservableList<makina> makinak = makinaZerrenda();
         id_makinaZerrenda1.setItems(makinak);
     }
-
 
     public ObservableList<makina> makinaZerrenda() {
 
@@ -707,11 +702,9 @@ public class MaltunaBrandController {
         return makinak;
     }
 
-//********************************************************************************************************************  
-//                                                     ERABILTZAILEA  
-//********************************************************************************************************************
-
-
+    // ********************************************************************************************************************
+    // ERABILTZAILEA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuErabiltzailea;
@@ -745,8 +738,6 @@ public class MaltunaBrandController {
     private TextField id_sartuPostaKodeaErabiltzailea;
     @FXML
     private Button id_gehituErabiltzailea;
-    @FXML
-    private TitledPane id_erbiltzaileaGehituPantaila;   
     @FXML
     private TextField id_kenduIDErabiltzailea;
     @FXML
@@ -796,44 +787,739 @@ public class MaltunaBrandController {
     @FXML
     private TitledPane id_erabiltzaileaZerrendatuPantaila;
     @FXML
-    private ListView<makina> id_erabiltzaileaZerrenda;
+    private ListView<erabiltzailea> id_erabiltzaileaZerrenda;
     @FXML
-    private ListView<makina> id_erabiltzaileaZerrenda1;
+    private ListView<erabiltzailea> id_erabiltzaileaZerrenda1;
     @FXML
     private AnchorPane id_erabiltzaileaInfoPantaila;
     @FXML
     private Label id_label_erabiltzaileaZerrenda;
+    @FXML
+    private Button id_button_ErabiltzaileaBilatu;
+    @FXML
+    private Button id_button_ErabiltzaileaBilatu1;
 
     @FXML
     void gehituErabiltzaileaPantaila(ActionEvent event) {
+        id_imageErabiltzailea.setVisible(false);
+        id_erabiltzaileaKenduPantaila.setVisible(false);
+        id_erabiltzaileaAldatuPantaila.setVisible(false);
+        id_erabiltzaileaGehituPantaila.setVisible(true);
+        id_erabiltzaileaZerrendatuPantaila.setVisible(false);
+        id_label_erabiltzaileaZerrenda.setVisible(false);
+        ObservableList<erabiltzailea> erabiltzaileak = FXCollections.observableArrayList();
+        // Pantaila garbitu, textfieldak
+        id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+        id_sartuIDErabiltzailea.setText("");
+        id_sartuIzenaErabiltzailea.setText("");
+        id_sartuAbizena1Erabiltzailea.setText("");
+        id_sartuNANErabiltzailea.setText("");
+        id_sartuHelbideaErabiltzailea.setText("");
+        id_sartuPostaKodeaErabiltzailea.setText("");
+        id_sartuEmailaErabiltzailea.setText("");
+        id_sartuJaiotzeDataErabiltzailea.setValue(null);
+        id_sartuAltaDataErabiltzailea.setValue(null);
     }
+
     @FXML
     void gehituErabiltzailea(ActionEvent event) {
+        // escenetik makinaren datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean erabiltzaileaTxertatua = false;
+        String id = id_sartuIDErabiltzailea.getText();
+        String izena = id_sartuIzenaErabiltzailea.getText();
+        String abizena1 = id_sartuAbizena1Erabiltzailea.getText();
+        String nan = id_sartuNANErabiltzailea.getText();
+        String helbidea = id_sartuHelbideaErabiltzailea.getText();
+        String posta_kodea = id_sartuPostaKodeaErabiltzailea.getText();
+        String emaila = id_sartuEmailaErabiltzailea.getText();
+        LocalDate jaiotzeData = id_sartuJaiotzeDataErabiltzailea.getValue();
+        LocalDate altaData = id_sartuAltaDataErabiltzailea.getValue();
+        // Jaiotze data eta alta data Stringera pasa
+        String jaiotze_data = "";
+        String alta_data = "";
+        if (jaiotzeData != null) {
+            jaiotze_data = jaiotzeData.toString();
+        }
+        if (altaData != null) {
+            alta_data = altaData.toString();
+        }
+        // Escenetik jasotako daturen bat hutsik badago abixatu
+        if (!id.isEmpty() && !izena.isEmpty() && !abizena1.isEmpty() && !nan.isEmpty() && !helbidea.isEmpty()
+                && !posta_kodea.isEmpty()
+                && !emaila.isEmpty() && !jaiotze_data.isEmpty() && !alta_data.isEmpty()) {
+            if (posta_kodea.length() == 5) {
+                if (emaila.contains("@")) {
+                    // erabiltzaileBerria objetua sortu
+                    try {
+                        erabiltzailea erabiltzaileBerria = new erabiltzailea(Integer.parseInt(id), izena, abizena1, nan,
+                                helbidea, Integer.parseInt(posta_kodea), emaila, jaiotze_data, alta_data);
+                        // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                        // kudeatzeko.
+                        DBKonexioa dataBkonexioa = new DBKonexioa();
+
+                        try {
+                            // konektatu() metodoari deitzen zaio.
+                            // Metodo honek Connection motako objektu bat itzultzen du,
+                            // eta SQLException jaurtitzen du errorea gertatzen bada.
+                            Connection konexioa = dataBkonexioa.konektatu();
+                            // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                            if (konexioa != null && !konexioa.isClosed()) {
+                                System.out.println("Komunikazio kanala irekita dago.");
+                                // **INSERT INTO ERABILTZAILEA** SQL kontsulta prestatzen da
+                                String kontsulta = "INSERT INTO ERABILTZAILEA (ID_ERABILTZAILEA,IZENA,ABIZENA1,NAN,HELBIDEA,POSTA_KODEA,EMAILA,JAIOTZE_DATA,ALTA_DATA) VALUES(?,?,?,?,?,?,?,?,?)";
+                                System.out.println(kontsulta);
+                                PreparedStatement agindua = konexioa.prepareStatement(kontsulta);
+
+                                // Parametroak prestatzen dira, bakoitza dagokion zutabera sartzeko
+                                agindua.setInt(1, erabiltzaileBerria.getId_erabiltzailea());
+                                agindua.setString(2, erabiltzaileBerria.getIzena());
+                                agindua.setString(3, erabiltzaileBerria.getAbizena1());
+                                agindua.setString(4, erabiltzaileBerria.getNan());
+                                agindua.setString(5, erabiltzaileBerria.getHelbidea());
+                                agindua.setString(6, Integer.toString(erabiltzaileBerria.getPosta_kodea()));
+                                agindua.setString(7, erabiltzaileBerria.getEmaila());
+                                agindua.setDate(8, java.sql.Date.valueOf(erabiltzaileBerria.getJaiotze_data()));
+                                agindua.setDate(9, java.sql.Date.valueOf(erabiltzaileBerria.getAlta_data()));
+
+                                // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                                // executeUpdate() metodoak 1 itzultzen du, kontsulta ondo exekutatzen bada.
+                                int emaitza = agindua.executeUpdate();
+
+                                // Emaitza balioztatzen da: 1 itzultzen bada, datuak sartu dira.
+                                if (emaitza == 1) {
+                                    System.out.println("Erabiltzaile berria datu basean txertatu da");
+                                    erabiltzaileaTxertatua = true;
+                                }
+                                // Datu-basearekin konektatutako kanala itxi egiten da,
+                                // memoria eta baliabideak askatzeko.
+                                konexioa.close();
+                            }
+                        } catch (SQLException e) {
+                            // Salbuespen bat sortzen da SQL aginduak exekutatzen direnean errore bat
+                            // gertatuz gero.
+                            // Adibidez, datuak sartzeko parametroak okerrak izan daitezke edo taula ez
+                            // egon.
+                            System.out.println("Errorea makinaren datuak sortzean.");
+                            e.printStackTrace(); // Errorea aztertzeko informazioa bistaratzeko
+                        }
+                        if (erabiltzaileaTxertatua) {
+                            alerta.setTitle("INFO");
+                            alerta.setHeaderText(null);
+                            alerta.setContentText("Erabiltzaile berria txertatuta!");
+                            alerta.showAndWait();
+                            id_label_erabiltzaileaZerrenda.setVisible(true);
+                            ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+                            id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+                            id_erabiltzaileaInfoPantaila.setVisible(true);
+                        } else {
+                            alerta.setTitle("ADI !");
+                            alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                            alerta.setContentText("Ezin izan da erabiltzaile berria datu basean txertatu");
+                            alerta.showAndWait();
+                        }
+                    } catch (NumberFormatException e) {
+                        alerta.setTitle("ADI !");
+                        alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                        alerta.setContentText("Erabiltzailearen IDa eta posta kodea zenbaki osoak izan behar dira");
+                        alerta.showAndWait();
+                    }
+                } else {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                    alerta.setContentText("Erabiltzailearen emaila ez da egokia");
+                    alerta.showAndWait();
+                }
+            } else {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                alerta.setContentText("Erabiltzailearen posta kodeak bost digitu izan behar ditu");
+                alerta.showAndWait();
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_sartuIDErabiltzailea.setText("");
+        id_sartuIzenaErabiltzailea.setText("");
+        id_sartuAbizena1Erabiltzailea.setText("");
+        id_sartuNANErabiltzailea.setText("");
+        id_sartuHelbideaErabiltzailea.setText("");
+        id_sartuPostaKodeaErabiltzailea.setText("");
+        id_sartuEmailaErabiltzailea.setText("");
+        id_sartuJaiotzeDataErabiltzailea.setValue(null);
+        id_sartuAltaDataErabiltzailea.setValue(null);
     }
+
     @FXML
     void kenduErabiltzaileaPantaila(ActionEvent event) {
+        id_imageErabiltzailea.setVisible(false);
+        id_erabiltzaileaKenduPantaila.setVisible(true);
+        id_erabiltzaileaAldatuPantaila.setVisible(false);
+        id_erabiltzaileaGehituPantaila.setVisible(false);
+        id_erabiltzaileaZerrendatuPantaila.setVisible(false);
+        id_erabiltzaileaInfoPantaila.setVisible(true);
+        // Pantaila garbitu, textfieldak
+        id_kenduIDErabiltzailea.setText("");
+        id_kenduIzenaErabiltzailea.setText("");
+        id_kenduAbizena1Erabiltzailea.setText("");
+        id_kenduNANErabiltzailea.setText("");
+        id_kenduHelbideaErabiltzailea.setText("");
+        id_kenduPostaKodeaErabiltzailea.setText("");
+        id_kenduEmailaErabiltzailea.setText("");
+        id_kenduJaiotzeDataErabiltzailea.setValue(null);
+        id_kenduAltaDataErabiltzailea.setValue(null);
+        // Sarreran ez utzi idazten usuarioari
+        id_kenduIzenaErabiltzailea.setDisable(true);
+        id_kenduAbizena1Erabiltzailea.setDisable(true);
+        id_kenduNANErabiltzailea.setDisable(true);
+        id_kenduHelbideaErabiltzailea.setDisable(true);
+        id_kenduPostaKodeaErabiltzailea.setDisable(true);
+        id_kenduEmailaErabiltzailea.setDisable(true);
+        id_kenduJaiotzeDataErabiltzailea.setDisable(true);
+        id_kenduAltaDataErabiltzailea.setDisable(true);
+        // Erabiltzailearen zerrenda bistaratu:
+        id_label_erabiltzaileaZerrenda.setVisible(true);
+        ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+        id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+        // Aukeratutako erabiltzailea jaso
+        id_erabiltzaileaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_kenduIDErabiltzailea.setText(Integer.toString(aukeraBerria.getId_erabiltzailea()));
+                    id_kenduIzenaErabiltzailea.setText(aukeraBerria.getIzena());
+                    id_kenduAbizena1Erabiltzailea.setText(aukeraBerria.getAbizena1());
+                    id_kenduNANErabiltzailea.setText(aukeraBerria.getNan());
+                    id_kenduHelbideaErabiltzailea.setText(aukeraBerria.getHelbidea());
+                    id_kenduPostaKodeaErabiltzailea.setText(Integer.toString(aukeraBerria.getPosta_kodea()));
+                    id_kenduEmailaErabiltzailea.setText(aukeraBerria.getEmaila());
+                    id_kenduJaiotzeDataErabiltzailea.setValue(LocalDate.parse(aukeraBerria.getJaiotze_data()));
+                    id_kenduAltaDataErabiltzailea.setValue(LocalDate.parse(aukeraBerria.getAlta_data()));
+                });
+        // Erabiltzailearen IDa sartzean (textField en fokua aldatzean) datu basean
+        // aurkitu
+        // makina existitzen den
+        id_kenduIDErabiltzailea.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_kenduIDMakina textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_kenduIDErabiltzailea.setText("");
+                id_kenduIzenaErabiltzailea.setText("");
+                id_kenduAbizena1Erabiltzailea.setText("");
+                id_kenduNANErabiltzailea.setText("");
+                id_kenduHelbideaErabiltzailea.setText("");
+                id_kenduPostaKodeaErabiltzailea.setText("");
+                id_kenduEmailaErabiltzailea.setText("");
+                id_kenduJaiotzeDataErabiltzailea.setValue(null);
+                id_kenduAltaDataErabiltzailea.setValue(null);
+            }
+        });
+
     }
+
     @FXML
     void kenduErabiltzailea(ActionEvent event) {
+        // escenetik erabiltzailearen datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean erabiltzaileaEzabatua = false;
+        String id = id_kenduIDErabiltzailea.getText();
+        String izena = id_kenduIzenaErabiltzailea.getText();
+        String abizena1 = id_kenduAbizena1Erabiltzailea.getText();
+        String nan = id_kenduNANErabiltzailea.getText();
+        String helbidea = id_kenduHelbideaErabiltzailea.getText();
+        String posta_kodea = id_kenduPostaKodeaErabiltzailea.getText();
+        String emaila = id_kenduEmailaErabiltzailea.getText();
+        LocalDate jaiotzeData = id_kenduJaiotzeDataErabiltzailea.getValue();
+        LocalDate altaData = id_kenduAltaDataErabiltzailea.getValue();
+        // Jaiotze data eta alta data Stringera pasa
+        String jaiotze_data = "";
+        String alta_data = "";
+        if (jaiotzeData != null) {
+            jaiotze_data = jaiotzeData.toString();
+        }
+        if (altaData != null) {
+            alta_data = altaData.toString();
+        }
+        // Escenetik jasotako daturen bat hutsik badago abixatu
+        if (!id.isEmpty() && !izena.isEmpty() && !abizena1.isEmpty() && !nan.isEmpty() && !helbidea.isEmpty()
+                && !posta_kodea.isEmpty()
+                && !emaila.isEmpty() && !jaiotze_data.isEmpty() && !alta_data.isEmpty()) {
+            try {
+                erabiltzailea kentzekoErabiltzailea = new erabiltzailea(Integer.parseInt(id), izena, abizena1, nan,
+                        helbidea, Integer.parseInt(posta_kodea), emaila, jaiotze_data, alta_data);
+                // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                // kudeatzeko.
+                DBKonexioa dataBkonexioa = new DBKonexioa();
+
+                try {
+                    // konektatu() metodoari deitzen zaio.
+                    // Metodo honek Connection motako objektu bat itzultzen du,
+                    // eta SQLException jaurtitzen du errorea gertatzen bada.
+                    Connection cn = dataBkonexioa.konektatu();
+
+                    // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                    // "cn != null" konexioaren balio egokia den ziurtatzeko
+                    // eta "cn.isClosed()" konexioa irekita dagoen egiaztatzeko.
+                    if (cn != null && !cn.isClosed()) {
+                        System.out.println("Komunikazio kanala irekita dago.");
+
+                        // **DELETE FROM ERABILTZAILEA** SQL kontsulta prestatzen da.
+                        String kontsulta = "DELETE FROM ERABILTZAILEA WHERE ID_ERABILTZAILEA = ?";
+                        PreparedStatement agindua = cn.prepareStatement(kontsulta);
+
+                        // Parametroa prestatzen da, "id_erabiltzailea" balioa sartzeko.
+                        agindua.setInt(1, kentzekoErabiltzailea.getId_erabiltzailea());
+
+                        // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                        // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
+                        // den adieraziz.
+                        int emaitza = agindua.executeUpdate();
+
+                        // Emaitza balioztatu egiten da:
+                        // 0 itzultzen bada, ez da inongo langilerik ezabatu.
+                        // > 0 itzultzen bada, **langilea ezabatu dela** adierazten du.
+                        if (emaitza > 0) {
+                            System.out.println("Erabiltzailea ezabatu da");
+                            erabiltzaileaEzabatua = true;
+                        }
+
+                        // Datu-basearekin konektatutako kanala itxi egiten da,
+                        // memoria eta baliabideak askatzeko.
+                        cn.close();
+                        System.out.println("Konexioa itxi da.");
+                    }
+                } catch (SQLException e) {
+                    // SQL agindua exekutatzen edo konexioa egitean errore bat gertatzen bada,
+                    // salbuespena jasotzen da.
+                    System.out.println("Errorea erabiltzailearen datuak ezabatzean.");
+                    e.printStackTrace(); // Errorea aztertzeko informazioa bistaratzeko
+                }
+                if (erabiltzaileaEzabatua) {
+                    alerta.setTitle("INFO");
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Erabiltzailea, ezabatu da datu basetik!");
+                    alerta.showAndWait();
+                    id_label_erabiltzaileaZerrenda.setVisible(true);
+                    ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+                    id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+                } else {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                    alerta.setContentText("Ezin izan da erabiltzailea ezabatu");
+                    alerta.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                alerta.setContentText("Erabiltzailearen IDa eta posta kodea zenbaki osoak izan behar dira");
+                alerta.showAndWait();
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_kenduIDErabiltzailea.setText("");
+        id_kenduIzenaErabiltzailea.setText("");
+        id_kenduAbizena1Erabiltzailea.setText("");
+        id_kenduNANErabiltzailea.setText("");
+        id_kenduHelbideaErabiltzailea.setText("");
+        id_kenduPostaKodeaErabiltzailea.setText("");
+        id_kenduEmailaErabiltzailea.setText("");
+        id_kenduJaiotzeDataErabiltzailea.setValue(null);
+        id_kenduAltaDataErabiltzailea.setValue(null);
     }
+
+    @FXML
+    void ErabiltzaileaBilatuKendun(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        String id = id_kenduIDErabiltzailea.getText();
+        boolean erabiltzaileaAurkitua = false;
+        try {
+            int idZenb = Integer.parseInt(id);
+            ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+            for (erabiltzailea konzidituMakina : erabiltzaileak) {
+                if (konzidituMakina.getId_erabiltzailea() == idZenb) {
+                    id_kenduIzenaErabiltzailea.setText(konzidituMakina.getIzena());
+                    id_kenduAbizena1Erabiltzailea.setText(konzidituMakina.getAbizena1());
+                    id_kenduNANErabiltzailea.setText(konzidituMakina.getNan());
+                    id_kenduHelbideaErabiltzailea.setText(konzidituMakina.getHelbidea());
+                    id_kenduPostaKodeaErabiltzailea.setText(Integer.toString(konzidituMakina.getPosta_kodea()));
+                    id_kenduEmailaErabiltzailea.setText(konzidituMakina.getEmaila());
+                    id_kenduJaiotzeDataErabiltzailea.setValue(LocalDate.parse(konzidituMakina.getJaiotze_data()));
+                    id_kenduAltaDataErabiltzailea.setValue(LocalDate.parse(konzidituMakina.getAlta_data()));
+                    erabiltzaileaAurkitua = true;
+                    return;
+                }
+            }
+            if (!erabiltzaileaAurkitua) {
+                alerta.setTitle("INFO");
+                alerta.setHeaderText(null);
+                alerta.setContentText(id + " ID dun erabiltzailea ez da datu basean aurkitzen!");
+                alerta.showAndWait();
+                id_kenduIDErabiltzailea.setText("");
+                id_kenduIzenaErabiltzailea.setText("");
+                id_kenduAbizena1Erabiltzailea.setText("");
+                id_kenduNANErabiltzailea.setText("");
+                id_kenduHelbideaErabiltzailea.setText("");
+                id_kenduPostaKodeaErabiltzailea.setText("");
+                id_kenduEmailaErabiltzailea.setText("");
+                id_kenduJaiotzeDataErabiltzailea.setValue(null);
+                id_kenduAltaDataErabiltzailea.setValue(null);
+            }
+        } catch (NumberFormatException e) {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+            alerta.setContentText("Erabiltzailearen IDa eta posta kodea zenbaki osoak izan behar dira");
+            alerta.showAndWait();
+        }
+    }
+
     @FXML
     void aldatuErabiltzaileaPantaila(ActionEvent event) {
+        id_imageErabiltzailea.setVisible(false);
+        id_erabiltzaileaKenduPantaila.setVisible(false);
+        id_erabiltzaileaAldatuPantaila.setVisible(true);
+        id_erabiltzaileaGehituPantaila.setVisible(false);
+        id_erabiltzaileaZerrendatuPantaila.setVisible(false);
+        id_erabiltzaileaInfoPantaila.setVisible(true);
+        // Pantaila garbitu, textfieldak
+        id_aldatuIDErabiltzailea.setText("");
+        id_aldatuIzenaErabiltzailea.setText("");
+        id_aldatuAbizena1Erabiltzailea.setText("");
+        id_aldatuNANErabiltzailea.setText("");
+        id_aldatuHelbideaErabiltzailea.setText("");
+        id_aldatuPostaKodeaErabiltzailea.setText("");
+        id_aldatuEmailaErabiltzailea.setText("");
+        id_aldatuJaiotzeDataErabiltzailea.setValue(null);
+        id_aldatuAltaDataErabiltzailea.setValue(null);
+        // Sarreran ez utzi idazten usuarioari
+        id_aldatuIzenaErabiltzailea.setDisable(true);
+        id_aldatuAbizena1Erabiltzailea.setDisable(true);
+        id_aldatuNANErabiltzailea.setDisable(true);
+        id_aldatuHelbideaErabiltzailea.setDisable(true);
+        id_aldatuPostaKodeaErabiltzailea.setDisable(true);
+        id_aldatuEmailaErabiltzailea.setDisable(true);
+        id_aldatuJaiotzeDataErabiltzailea.setDisable(true);
+        id_aldatuAltaDataErabiltzailea.setDisable(true);
+        // Erabiltzaile zerrenda bistaratu:
+        id_label_erabiltzaileaZerrenda.setVisible(true);
+        ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+        id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+        // Aukeratutako erabiltzailea jaso
+        id_erabiltzaileaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_aldatuIDErabiltzailea.setText(Integer.toString(aukeraBerria.getId_erabiltzailea()));
+                    id_aldatuIzenaErabiltzailea.setText(aukeraBerria.getIzena());
+                    id_aldatuAbizena1Erabiltzailea.setText(aukeraBerria.getAbizena1());
+                    id_aldatuNANErabiltzailea.setText(aukeraBerria.getNan());
+                    id_aldatuHelbideaErabiltzailea.setText(aukeraBerria.getHelbidea());
+                    id_aldatuPostaKodeaErabiltzailea.setText(Integer.toString(aukeraBerria.getPosta_kodea()));
+                    id_aldatuEmailaErabiltzailea.setText(aukeraBerria.getEmaila());
+                    id_aldatuJaiotzeDataErabiltzailea.setValue(LocalDate.parse(aukeraBerria.getJaiotze_data()));
+                    id_aldatuAltaDataErabiltzailea.setValue(LocalDate.parse(aukeraBerria.getAlta_data()));
+                    id_aldatuIzenaErabiltzailea.setDisable(false);
+                    id_aldatuAbizena1Erabiltzailea.setDisable(false);
+                    id_aldatuNANErabiltzailea.setDisable(false);
+                    id_aldatuHelbideaErabiltzailea.setDisable(false);
+                    id_aldatuPostaKodeaErabiltzailea.setDisable(false);
+                    id_aldatuEmailaErabiltzailea.setDisable(false);
+                    id_aldatuJaiotzeDataErabiltzailea.setDisable(false);
+                    id_aldatuAltaDataErabiltzailea.setDisable(false);
+                });
+        // Erabiltzailearen IDa sartzean (textField en fokua aldatzean) datu basean
+        // aurkitu
+        // erabiltzailea existitzen den
+        id_aldatuIDErabiltzailea.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
+            // fokoa galdu, textField etik irten: focusBerria=false - textField era sartu:
+            // focusBerria=true
+            // id_aldatuIDErabiltzailea textField etik irten bada egin ondorengoa
+            if (focusBerria) {
+                id_aldatuIDErabiltzailea.setText("");
+                id_aldatuIzenaErabiltzailea.setText("");
+                id_aldatuAbizena1Erabiltzailea.setText("");
+                id_aldatuNANErabiltzailea.setText("");
+                id_aldatuHelbideaErabiltzailea.setText("");
+                id_aldatuPostaKodeaErabiltzailea.setText("");
+                id_aldatuEmailaErabiltzailea.setText("");
+                id_aldatuJaiotzeDataErabiltzailea.setValue(null);
+                id_aldatuAltaDataErabiltzailea.setValue(null);
+                id_aldatuIzenaErabiltzailea.setDisable(false);
+                id_aldatuAbizena1Erabiltzailea.setDisable(false);
+                id_aldatuNANErabiltzailea.setDisable(false);
+                id_aldatuHelbideaErabiltzailea.setDisable(false);
+                id_aldatuPostaKodeaErabiltzailea.setDisable(false);
+                id_aldatuEmailaErabiltzailea.setDisable(false);
+                id_aldatuJaiotzeDataErabiltzailea.setDisable(false);
+                id_aldatuAltaDataErabiltzailea.setDisable(false);
+            }
+        });
     }
+
     @FXML
     void aldatuErabiltzailea(ActionEvent event) {
+        // escenetik erabiltzailearen datuak jaso
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        boolean erabiltzaileAldatuta = false;
+        String id = id_aldatuIDErabiltzailea.getText();
+        String izena = id_aldatuIzenaErabiltzailea.getText();
+        String abizena1 = id_aldatuAbizena1Erabiltzailea.getText();
+        String nan = id_aldatuNANErabiltzailea.getText();
+        String helbidea = id_aldatuHelbideaErabiltzailea.getText();
+        String posta_kodea = id_aldatuPostaKodeaErabiltzailea.getText();
+        String emaila = id_aldatuEmailaErabiltzailea.getText();
+        LocalDate jaiotzeData = id_aldatuJaiotzeDataErabiltzailea.getValue();
+        LocalDate altaData = id_aldatuAltaDataErabiltzailea.getValue();
+        // Jaiotze data eta alta data Stringera pasa
+        String jaiotze_data = "";
+        String alta_data = "";
+        if (jaiotzeData != null) {
+            jaiotze_data = jaiotzeData.toString();
+        }
+        if (altaData != null) {
+            alta_data = altaData.toString();
+        }
+        // Escenetik jasotako daturen bat hutsik badago abixatu
+        if (!id.isEmpty() && !izena.isEmpty() && !abizena1.isEmpty() && !nan.isEmpty() && !helbidea.isEmpty()
+                && !posta_kodea.isEmpty()
+                && !emaila.isEmpty() && !jaiotze_data.isEmpty() && !alta_data.isEmpty()) {
+            try {
+                erabiltzailea aldatzekoErabiltzailea = new erabiltzailea(Integer.parseInt(id), izena, abizena1, nan,
+                        helbidea, Integer.parseInt(posta_kodea), emaila, jaiotze_data, alta_data);
+                // DBKonexioa klaseko objektu bat sortzen da, datu-basearekin konexioa
+                // kudeatzeko.
+                DBKonexioa dataBkonexioa = new DBKonexioa();
+
+                try {
+                    // konektatu() metodoari deitzen zaio.
+                    // Metodo honek Connection motako objektu bat itzultzen du,
+                    // eta SQLException jaurtitzen du errorea gertatzen bada.
+                    Connection cn = dataBkonexioa.konektatu();
+
+                    // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+                    // "cn != null" konexioaren balio egokia den ziurtatzeko
+                    // eta "cn.isClosed()" konexioa irekita dagoen egiaztatzeko.
+                    if (cn != null && !cn.isClosed()) {
+                        System.out.println("Komunikazio kanala irekita dago.");
+
+                        // **UPDATE ERABILTZAILEA SET...** SQL kontsulta prestatzen da.
+                        String kontsulta = "UPDATE ERABILTZAILEA SET IZENA=?, ABIZENA1=?, NAN=?, HELBIDEA=?, POSTA_KODEA=?, EMAILA=?, JAIOTZE_DATA=?, ALTA_DATA=? WHERE ID_ERABILTZAILEA = ?";
+                        PreparedStatement agindua = cn.prepareStatement(kontsulta);
+
+                        // Parametroak prestatzen dira, bakoitza dagokion zutabera sartzeko
+                        agindua.setString(1, aldatzekoErabiltzailea.getIzena());
+                        agindua.setString(2, aldatzekoErabiltzailea.getAbizena1());
+                        agindua.setString(3, aldatzekoErabiltzailea.getNan());
+                        agindua.setString(4, aldatzekoErabiltzailea.getHelbidea());
+                        agindua.setString(5, Integer.toString(aldatzekoErabiltzailea.getPosta_kodea()));
+                        agindua.setString(6, aldatzekoErabiltzailea.getEmaila());
+                        agindua.setDate(7, java.sql.Date.valueOf(aldatzekoErabiltzailea.getJaiotze_data()));
+                        agindua.setDate(8, java.sql.Date.valueOf(aldatzekoErabiltzailea.getAlta_data()));
+                        agindua.setInt(9, aldatzekoErabiltzailea.getId_erabiltzailea());
+
+                        // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
+                        // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
+                        // den adieraziz.
+                        int emaitza = agindua.executeUpdate();
+
+                        // Emaitza balioztatu egiten da:
+                        // > 0 itzultzen bada, **erabilltzailea ezabatu dela** adierazten du.
+                        if (emaitza > 0) {
+                            System.out.println("Erabiltzailea aldatu da");
+                            erabiltzaileAldatuta = true;
+                        }
+
+                        // Datu-basearekin konektatutako kanala itxi egiten da,
+                        // memoria eta baliabideak askatzeko.
+                        cn.close();
+                        System.out.println("Konexioa itxi da.");
+                    }
+                } catch (SQLException e) {
+                    // SQL agindua exekutatzen edo konexioa egitean errore bat gertatzen bada,
+                    // salbuespena jasotzen da.
+                    System.out.println("Errorea erabiltzailearen datuak aldatzean.");
+                    e.printStackTrace(); // Errorea aztertzeko informazioa bistaratzeko
+                }
+                if (erabiltzaileAldatuta) {
+                    alerta.setTitle("INFO");
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Erabiltzailea aldatu da!");
+                    alerta.showAndWait();
+                    id_label_makinaZerrenda.setVisible(true);
+                    ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+                    id_erabiltzaileaZerrenda.setItems(erabiltzaileak);
+                } else {
+                    alerta.setTitle("ADI !");
+                    alerta.setHeaderText("Arazoak izan dira datu basearekin.");
+                    alerta.setContentText("Ezin izan da erabiltzailea aldatu");
+                    alerta.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                alerta.setTitle("ADI !");
+                alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+                alerta.setContentText("Erabiltzailearen IDa eta kode postala zenbaki osoak izan behar dira");
+                alerta.showAndWait();
+            }
+        } else {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Ziurtatu eremu guztiak modu egokian bete direla!");
+            alerta.showAndWait();
+        }
+        // Sarrerako datuak garbitu:
+        id_aldatuIDErabiltzailea.setText("");
+        id_aldatuIzenaErabiltzailea.setText("");
+        id_aldatuAbizena1Erabiltzailea.setText("");
+        id_aldatuNANErabiltzailea.setText("");
+        id_aldatuHelbideaErabiltzailea.setText("");
+        id_aldatuPostaKodeaErabiltzailea.setText("");
+        id_aldatuEmailaErabiltzailea.setText("");
+        id_aldatuJaiotzeDataErabiltzailea.setValue(null);
+        id_aldatuAltaDataErabiltzailea.setValue(null);
+        // Sarreran ez utzi idazten usuarioari
+        id_aldatuIzenaErabiltzailea.setDisable(false);
+        id_aldatuAbizena1Erabiltzailea.setDisable(false);
+        id_aldatuNANErabiltzailea.setDisable(false);
+        id_aldatuHelbideaErabiltzailea.setDisable(false);
+        id_aldatuPostaKodeaErabiltzailea.setDisable(false);
+        id_aldatuEmailaErabiltzailea.setDisable(false);
+        id_aldatuJaiotzeDataErabiltzailea.setDisable(false);
+        id_aldatuAltaDataErabiltzailea.setDisable(false);
     }
+
+    @FXML
+    void ErabiltzaileaBilatuAldatun(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        String id = id_aldatuIDErabiltzailea.getText();
+        boolean erabiltzaileaAurkitua = false;
+        try {
+            int idZenb = Integer.parseInt(id);
+            ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+            for (erabiltzailea konzidituErabiltzailea : erabiltzaileak) {
+                if (konzidituErabiltzailea.getId_erabiltzailea() == idZenb) {
+                    id_aldatuIzenaErabiltzailea.setText(konzidituErabiltzailea.getIzena());
+                    id_aldatuAbizena1Erabiltzailea.setText(konzidituErabiltzailea.getAbizena1());
+                    id_aldatuNANErabiltzailea.setText(konzidituErabiltzailea.getNan());
+                    id_aldatuHelbideaErabiltzailea.setText(konzidituErabiltzailea.getHelbidea());
+                    id_aldatuPostaKodeaErabiltzailea.setText(Integer.toString(konzidituErabiltzailea.getPosta_kodea()));
+                    id_aldatuEmailaErabiltzailea.setText(konzidituErabiltzailea.getEmaila());
+                    id_aldatuJaiotzeDataErabiltzailea
+                            .setValue(LocalDate.parse(konzidituErabiltzailea.getJaiotze_data()));
+                    id_aldatuAltaDataErabiltzailea.setValue(LocalDate.parse(konzidituErabiltzailea.getAlta_data()));
+                    id_aldatuIzenaErabiltzailea.setDisable(false);
+                    id_aldatuAbizena1Erabiltzailea.setDisable(false);
+                    id_aldatuNANErabiltzailea.setDisable(false);
+                    id_aldatuHelbideaErabiltzailea.setDisable(false);
+                    id_aldatuPostaKodeaErabiltzailea.setDisable(false);
+                    id_aldatuEmailaErabiltzailea.setDisable(false);
+                    id_aldatuJaiotzeDataErabiltzailea.setDisable(false);
+                    id_aldatuAltaDataErabiltzailea.setDisable(false);
+                    erabiltzaileaAurkitua = true;
+                    return;
+                }
+            }
+            if (!erabiltzaileaAurkitua) {
+                alerta.setTitle("INFO");
+                alerta.setHeaderText(null);
+                alerta.setContentText(id + " ID dun erabiltzailea ez da datu basean aurkitzen!");
+                alerta.showAndWait();
+                id_aldatuIDErabiltzailea.setText("");
+                id_aldatuIzenaErabiltzailea.setText("");
+                id_aldatuAbizena1Erabiltzailea.setText("");
+                id_aldatuNANErabiltzailea.setText("");
+                id_aldatuHelbideaErabiltzailea.setText("");
+                id_aldatuPostaKodeaErabiltzailea.setText("");
+                id_aldatuEmailaErabiltzailea.setText("");
+                id_aldatuJaiotzeDataErabiltzailea.setValue(null);
+                id_aldatuAltaDataErabiltzailea.setValue(null);
+            }
+        } catch (NumberFormatException e) {
+            alerta.setTitle("ADI !");
+            alerta.setHeaderText("Arreta jarri sartu dituzun datuengan");
+            alerta.setContentText("Erabiltzaileare IDa eta posta kodea zenbaki osoak izan behar dira");
+            alerta.showAndWait();
+        }
+    }
+
     @FXML
     void zerrendatuErabiltzaileakPantaila(ActionEvent event) {
+        id_imageErabiltzailea.setVisible(false);
+        id_erabiltzaileaKenduPantaila.setVisible(false);
+        id_erabiltzaileaAldatuPantaila.setVisible(true);
+        id_erabiltzaileaGehituPantaila.setVisible(false);
+        id_erabiltzaileaZerrendatuPantaila.setVisible(true);
+        id_erabiltzaileaInfoPantaila.setVisible(false);
+
+        // Erabiltzaile zerrenda bistaratu:
+        ObservableList<erabiltzailea> erabiltzaileak = erabiltzaileZerrenda();
+        id_erabiltzaileaZerrenda1.setItems(erabiltzaileak);
     }
-    
 
+    public ObservableList<erabiltzailea> erabiltzaileZerrenda() {
 
+        ObservableList<erabiltzailea> erabiltzaileak = FXCollections.observableArrayList();
+        // DBKonexioa klaseko objektu bat sortzen da,
+        // datu-basearekin konexioa kudeatzeko.
+        DBKonexioa konex = new DBKonexioa();
 
+        try {
+            // konektatu() metodoari deitzen zaio.
+            // Metodo honek Connection motako objektu bat bueltatzen du,
+            // eta SQLException jaurti dezake errorea gertatzen bada.
+            Connection cn = konex.konektatu();
 
-//********************************************************************************************************************  
-//                                                     PIEZA  
-//********************************************************************************************************************
-    
+            // Konexioa existitzen dela eta irekita dagoela egiaztatzen da.
+            if (cn != null && !cn.isClosed()) {
+                System.out.println("Komunikazio kanala irekita dago.");
+
+                // PreparedStatement: SQL kontsulta bat prestatzen du
+                // eta exekutatzeko prest dagoen objektu bat sortzen da.
+                // "Prepared" deitzen da, izan ere, SQL aginduak lehenago prestatu etaondoren
+                // exekutatzen direlako.
+                // String motako kontsulta aldagaian "INSERT INTO ERABILTZAILEA
+                // "SELECT ID_ERABILTZAILEA, IZENA, ABIZENA1, NAN, HELBIDEA, POSTA_KODEA,
+                // EMAILA, JAIOTZE_DATA, ALTA_DATA FROM ERABILTZAILEA"
+                String kontsulta = "SELECT ID_ERABILTZAILEA, IZENA, ABIZENA1, NAN, HELBIDEA, POSTA_KODEA, EMAILA, JAIOTZE_DATA, ALTA_DATA FROM ERABILTZAILEA";
+                // Adierazitako kontsulta prestatzen da
+                PreparedStatement agindua = cn.prepareStatement(kontsulta);
+                // Prestatutako kontsulta exekutatzen da
+                ResultSet emaitza = agindua.executeQuery();
+
+                // ResultSet: SQL kontsultaren emaitzak jasotzen ditu.
+                // "ResultSet" objektuak datu-baseko erantzunaren edukia gordetzen du.
+                while (emaitza.next()) {
+                    erabiltzailea irakurritakoErabiltzailea = new erabiltzailea(emaitza.getInt("id_erabiltzailea"),
+                            emaitza.getString("izena"),
+                            emaitza.getString("abizena1"), emaitza.getString("nan"), emaitza.getString("helbidea"),
+                            emaitza.getInt("posta_kodea"), emaitza.getString("emaila"),
+                            emaitza.getString("jaiotze_data"),
+                            emaitza.getString("alta_data"));
+                    erabiltzaileak.add(irakurritakoErabiltzailea);
+                }
+                // ResultSet objektua itxi egiten da, memoria baliabideak askatuz.
+                emaitza.close();
+                // Datu-basearekiko konexioa itxi egiten da.
+                cn.close();
+                System.out.println("Konexioa itxi da.");
+            }
+        } catch (SQLException e) {
+            // Salbuespena harrapatzen da kontsultan edo konexioan
+            // arazoren bat gertatu bada.
+            System.out.println("Errorea kontsulta exekutatzean");
+            e.printStackTrace();
+        }
+        return erabiltzaileak;
+    }
+
+    // ********************************************************************************************************************
+    // PIEZA
+    // ********************************************************************************************************************
+
     @FXML
     private VBox id_ezkerMenua_pieza;
     @FXML
@@ -865,7 +1551,7 @@ public class MaltunaBrandController {
     @FXML
     private Button id_gehituPieza;
     @FXML
-    private TitledPane id_piezaGehituPantaila;   
+    private TitledPane id_piezaGehituPantaila;
     @FXML
     private TextField id_kenduIDPieza;
     @FXML
@@ -885,7 +1571,7 @@ public class MaltunaBrandController {
     @FXML
     private Button id_kenduPieza;
     @FXML
-    private TitledPane id_piezaKenduPantaila;    
+    private TitledPane id_piezaKenduPantaila;
     @FXML
     private TextField id_aldatuIDPieza;
     @FXML
@@ -906,7 +1592,7 @@ public class MaltunaBrandController {
     private Button id_aldatuPieza;
     @FXML
     private TitledPane id_PiezaAldatuPantaila;
-     @FXML
+    @FXML
     private TitledPane id_PiezaZerrendatuPantaila;
     @FXML
     private ListView<makina> id_piezaZerrenda;
@@ -920,31 +1606,34 @@ public class MaltunaBrandController {
     @FXML
     void gehituPiezaPantaila(ActionEvent event) {
     }
+
     @FXML
     void gehituPieza(ActionEvent event) {
     }
+
     @FXML
     void kenduPiezaPantaila(ActionEvent event) {
     }
+
     @FXML
     void kenduPieza(ActionEvent event) {
     }
+
     @FXML
     void aldatuPiezaPantaila(ActionEvent event) {
     }
+
     @FXML
     void aldatuPieza(ActionEvent event) {
     }
+
     @FXML
     void zerrendatuPiezakPantaila(ActionEvent event) {
     }
-    
 
-
-//********************************************************************************************************************  
-//                                                    MAKINA - ERABILTZAILEA  
-//********************************************************************************************************************
-
+    // ********************************************************************************************************************
+    // MAKINA - ERABILTZAILEA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuMakinaErabiltzailea;
@@ -965,15 +1654,15 @@ public class MaltunaBrandController {
     @FXML
     private DatePicker id_sartuHasieraDataMakinaErabiltzailea;
     @FXML
-    private DatePicker id_sartuAmaieraDataMakinaErabiltzailea;    
+    private DatePicker id_sartuAmaieraDataMakinaErabiltzailea;
     @FXML
     private Button id_gehituMakinaErabiltzailea;
     @FXML
-    private TitledPane id_makinaErabiltzaileaGehituPantaila;   
+    private TitledPane id_makinaErabiltzaileaGehituPantaila;
     @FXML
     private TextField id_kenduIDErabiltzailea1;
     @FXML
-    private TextField id_kenduIDMakina1;    
+    private TextField id_kenduIDMakina1;
     @FXML
     private DatePicker id_kenduHasieraDataMakinaErabiltzailea;
     @FXML
@@ -1040,8 +1729,11 @@ public class MaltunaBrandController {
         id_sartuAmaieraDataMakinaErabiltzailea.getEditor().clear();  
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> devAppErabiltzailea
     @FXML
     void gehituMakinaErabiltzailea(ActionEvent event) {
         // escenetik makinaErabiltzailearen datuak jaso
@@ -1144,8 +1836,11 @@ public class MaltunaBrandController {
         id_sartuAmaieraDataMakinaErabiltzailea.getEditor().clear();
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> devAppErabiltzailea
     @FXML
     void kenduMakinaErabiltzaileaPantaila(ActionEvent event) {
         id_imageMakinaErabiltzailea.setVisible(false);
@@ -1201,17 +1896,21 @@ public class MaltunaBrandController {
             }
         });
     }
+<<<<<<< HEAD
     
         
 //  lllllllllllllllllllllllll
 
 
 
+=======
+>>>>>>> devAppErabiltzailea
 
     @FXML
     void kenduMakinaErabiltzailea(ActionEvent event) {
     }
 
+<<<<<<< HEAD
 
     @FXML
     void makinaErabiltzaileaBilatuKendun(ActionEvent event) {
@@ -1219,13 +1918,17 @@ public class MaltunaBrandController {
 
     
 
+=======
+>>>>>>> devAppErabiltzailea
     @FXML
     void aldatuMakinaErabiltzaileaPantaila(ActionEvent event) {
     }
+
     @FXML
     void aldatuMakinaErabiltzailea(ActionEvent event) {
     }
 
+<<<<<<< HEAD
     @FXML
     void makinaErabiltzaileaBilatuAldatun(ActionEvent event) {
     }
@@ -1235,6 +1938,8 @@ public class MaltunaBrandController {
 
 
 
+=======
+>>>>>>> devAppErabiltzailea
     @FXML
     void zerrendatuMakinaErabiltzaileakPantaila(ActionEvent event) {
         id_imageMakinaErabiltzailea.setVisible(false);
@@ -1248,6 +1953,7 @@ public class MaltunaBrandController {
         ObservableList<makinaErabiltzailea> makinaErabiltzaileak = makinaErabiltzaileakZerrenda();
         id_makinaErabiltzaileaZerrenda1.setItems(makinaErabiltzaileak);
     }
+<<<<<<< HEAD
     
 
 
@@ -1307,7 +2013,12 @@ public class MaltunaBrandController {
 //********************************************************************************************************************  
 //                                                    PIEZA MOTA  
 //********************************************************************************************************************
+=======
+>>>>>>> devAppErabiltzailea
 
+    // ********************************************************************************************************************
+    // PIEZA MOTA
+    // ********************************************************************************************************************
 
     @FXML
     private Button id_button_aldatuPiezaMota;
@@ -1324,11 +2035,11 @@ public class MaltunaBrandController {
     @FXML
     private TextField id_sartuIzenaPiezaMota;
     @FXML
-    private TextField id_sartuIDPiezaMota;   
+    private TextField id_sartuIDPiezaMota;
     @FXML
     private Button id_gehituPiezaMota;
     @FXML
-    private TitledPane id_piezaMotaGehituPantaila;   
+    private TitledPane id_piezaMotaGehituPantaila;
     @FXML
     private TextField id_kenduIDPiezaMota;
     @FXML
@@ -1359,10 +2070,6 @@ public class MaltunaBrandController {
     private Button id_button_piezaMotaBilatu;
     @FXML
     private Button id_button_piezaMotaBilatu1;
-    
-    
-
-
 
     @FXML
     void gehituPiezaMotaPantaila(ActionEvent event) {
@@ -1378,6 +2085,7 @@ public class MaltunaBrandController {
         id_piezaMotaZerrenda.setItems(piezaMotak);
         id_sartuIzenaPiezaMota.setText("");
     }
+
     @FXML
     void gehituPiezaMota(ActionEvent event) {
         // escenetik pieza motaren datuak jaso
@@ -1385,7 +2093,7 @@ public class MaltunaBrandController {
         boolean piezaMotaTxertatua = false;
         String id = id_sartuIDPiezaMota.getText();
         String izena = id_sartuIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // piezaMotaBerria objetua sortu
@@ -1464,9 +2172,6 @@ public class MaltunaBrandController {
         id_sartuIzenaPiezaMota.setText("");
     }
 
-
-
-
     @FXML
     void kenduPiezaMotaPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1485,10 +2190,11 @@ public class MaltunaBrandController {
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda.setItems(piezaMotak);
         // Aukeratutako pieza mota jaso
-        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-            id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
-        });
+        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_kenduIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                    id_kenduIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
         id_kenduIDPiezaMota.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
@@ -1502,18 +2208,14 @@ public class MaltunaBrandController {
         });
     }
 
-
-
-
-
     @FXML
     void kenduPiezaMota(ActionEvent event) {
-         // escenetik makinaren datuak jaso
+        // escenetik makinaren datuak jaso
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         boolean piezaMotaEzabatua = false;
         String id = id_kenduIDPiezaMota.getText();
         String izena = id_kenduIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // piezaMotaBerria objetua sortu
@@ -1597,9 +2299,6 @@ public class MaltunaBrandController {
         id_kenduIzenaPiezaMota.setText("");
     }
 
-
-    
-
     @FXML
     void piezaMotaBilatuKendun(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -1631,9 +2330,6 @@ public class MaltunaBrandController {
         }
     }
 
-
-
-
     @FXML
     void aldatuPiezaMotaPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1652,11 +2348,12 @@ public class MaltunaBrandController {
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda.setItems(piezaMotak);
         // Aukeratutako pieza mota jaso
-        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty().addListener((obs, aurrekoAukera, aukeraBerria) -> {
-            id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
-            id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
-            id_aldatuIzenaPiezaMota.setDisable(false);
-        });
+        id_piezaMotaZerrenda.getSelectionModel().selectedItemProperty()
+                .addListener((obs, aurrekoAukera, aukeraBerria) -> {
+                    id_aldatuIDPiezaMota.setText(Integer.toString(aukeraBerria.getId_piezaMota()));
+                    id_aldatuIzenaPiezaMota.setText(aukeraBerria.getIzena());
+                    id_aldatuIzenaPiezaMota.setDisable(false);
+                });
         // Pieza motaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
         // pieza mota existitzen den
         id_aldatuIDPiezaMota.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
@@ -1671,9 +2368,6 @@ public class MaltunaBrandController {
         });
     }
 
-
-
-
     @FXML
     void aldatuPiezaMota(ActionEvent event) {
         // escenetik pieza motaren datuak jaso
@@ -1681,7 +2375,7 @@ public class MaltunaBrandController {
         boolean piezaMotaAldatuta = false;
         String id = id_aldatuIDPiezaMota.getText();
         String izena = id_aldatuIzenaPiezaMota.getText();
-        
+
         // Escenetik jasotako daturen bat hutsik badago abixatu
         if (!id.isEmpty() && !izena.isEmpty()) {
             // aldatzekoPiezaMota objetua sortu
@@ -1707,10 +2401,9 @@ public class MaltunaBrandController {
                         String kontsulta = "UPDATE PIEZA_MOTA SET IZENA=? WHERE ID_PIEZA_MOTA=?";
                         PreparedStatement agindua = cn.prepareStatement(kontsulta);
 
-                        // Parametroak prestatzen dira, balioaksartzeko.                        
+                        // Parametroak prestatzen dira, balioaksartzeko.
                         agindua.setString(1, aldatzekoPiezaMota.getIzena());
                         agindua.setInt(2, aldatzekoPiezaMota.getId_piezaMota());
-
 
                         // SQL agindua exekutatzen da, eta emaitza zenbakira bihurtzen da.
                         // executeUpdate() metodoak zenbakia itzultzen du, eragiketa zenbat aldiz egin
@@ -1768,9 +2461,6 @@ public class MaltunaBrandController {
         id_aldatuIzenaPiezaMota.setDisable(true);
     }
 
-
-
-
     @FXML
     void piezaMotaBilatuAldatun(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -1803,9 +2493,6 @@ public class MaltunaBrandController {
         }
     }
 
-
-
-
     @FXML
     void zerrendatuPiezaMotakPantaila(ActionEvent event) {
         id_imagePiezaMotak.setVisible(false);
@@ -1814,14 +2501,11 @@ public class MaltunaBrandController {
         id_piezaMotaGehituPantaila.setVisible(false);
         id_piezaMotaZerrendatuPantaila.setVisible(true);
         id_piezaMotaInfoPantaila.setVisible(false);
-        
+
         // Makinen zerrenda bistaratu:
         ObservableList<piezaMota> piezaMotak = piezaMotaZerrenda();
         id_piezaMotaZerrenda1.setItems(piezaMotak);
     }
-    
-
-
 
     public ObservableList<piezaMota> piezaMotaZerrenda() {
         ObservableList<piezaMota> piezaMotak = FXCollections.observableArrayList();
@@ -1860,7 +2544,8 @@ public class MaltunaBrandController {
                     // makina potentzia: "potentzia" zutabean dagoen balioa irakurriko da
                     // makina instalakuntzaData: "instalakuntza_data" zutabean dagoen balioa
                     // irakurriko da
-                    piezaMota irakurritakoPiezaMota = new piezaMota(emaitza.getInt("id_pieza_mota"), emaitza.getString("izena"));
+                    piezaMota irakurritakoPiezaMota = new piezaMota(emaitza.getInt("id_pieza_mota"),
+                            emaitza.getString("izena"));
                     piezaMotak.add(irakurritakoPiezaMota);
                 }
                 // ResultSet objektua itxi egiten da, memoria baliabideak askatuz.
