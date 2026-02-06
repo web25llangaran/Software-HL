@@ -2525,7 +2525,7 @@ public class MaltunaBrandController {
                     id_label_makinaErabiltzaileaZerrenda.setVisible(true);
                     ObservableList<makinaErabiltzailea> makinaErabiltzaileak = makinaErabiltzaileakZerrenda();
                     id_makinaErabiltzaileaZerrenda.setItems(makinaErabiltzaileak);
-                    id_makinaErabiltzaileaZerrendatuPantaila.setVisible(true);
+                    id_makinaErabiltzaileaInfoPantaila.setVisible(true);
                 } else {
                     alerta.setTitle("ADI !");
                     alerta.setHeaderText("Arazoak izan dira datu basearekin.");
@@ -2811,6 +2811,8 @@ public class MaltunaBrandController {
                                 .setValue((LocalDate.parse(aukeraBerria.getHasiera_data())));
                         id_aldatuAmaieraDataMakinaErabiltzailea
                                 .setValue((LocalDate.parse(aukeraBerria.getAmaiera_data())));
+                        id_aldatuHasieraDataMakinaErabiltzailea.setDisable(false);
+                        id_aldatuAmaieraDataMakinaErabiltzailea.setDisable(false);
                     }
                 });
         // Makinaren IDa sartzean (textField en fokua aldatzean) datu basean aurkitu
@@ -2827,6 +2829,8 @@ public class MaltunaBrandController {
                 id_aldatuAmaieraDataMakinaErabiltzailea.setValue(null);
                 id_aldatuHasieraDataMakinaErabiltzailea.getEditor().clear();
                 id_aldatuAmaieraDataMakinaErabiltzailea.getEditor().clear();
+                id_aldatuHasieraDataMakinaErabiltzailea.setDisable(true);
+                id_aldatuAmaieraDataMakinaErabiltzailea.setDisable(true);
             }
         });
         id_aldatuIDMakina1.focusedProperty().addListener((obs, focusZaharra, focusBerria) -> {
@@ -2841,6 +2845,8 @@ public class MaltunaBrandController {
                 id_aldatuAmaieraDataMakinaErabiltzailea.setValue(null);
                 id_aldatuHasieraDataMakinaErabiltzailea.getEditor().clear();
                 id_aldatuAmaieraDataMakinaErabiltzailea.getEditor().clear();
+                id_aldatuHasieraDataMakinaErabiltzailea.setDisable(true);
+                id_aldatuAmaieraDataMakinaErabiltzailea.setDisable(true);
             }
         });
     }
@@ -2974,6 +2980,8 @@ public class MaltunaBrandController {
                             .setValue((LocalDate.parse(konzidituMakinaErabiltzailea.getHasiera_data())));
                     id_aldatuHasieraDataMakinaErabiltzailea
                             .setValue((LocalDate.parse(konzidituMakinaErabiltzailea.getAmaiera_data())));
+                    id_aldatuHasieraDataMakinaErabiltzailea.setDisable(false);
+                    id_aldatuAmaieraDataMakinaErabiltzailea.setDisable(false);
                     makinaErabiltzaileaAurkitua = true;
                     return;
                 }
