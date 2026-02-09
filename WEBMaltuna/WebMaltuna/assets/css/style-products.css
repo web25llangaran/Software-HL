@@ -1,0 +1,86 @@
+/* =========================*/
+/* inner-page-products.html */
+/* =========================*/
+
+/* Estiloa eman celdei: */
+td {
+    width: 50%;
+}
+
+.irudia_celda {
+    textAlign: center;
+    color: rgb(68, 68, 68);
+}
+
+/* Irudiaren estiloa */
+img {
+    margin-left: 22%;
+    width: 60%;
+}
+
+
+.info_edukiontzia {
+    margin-top: 8%;
+    margin-bottom: 15%;
+    margin-left: 20%;
+}
+
+.botoi_edukiontzia {
+    margin-bottom: 4%;
+}
+
+/* Info gehiagoko botoiaren estiloa */
+.botoia {
+    padding: 2%;
+    border-radius: 4px;
+    color: rgb(255, 196, 81);
+    border: 1px solid rgb(255, 196, 81);
+    box-shadow: 4px 4px rgba(9, 9, 9, 0.08);
+    font-size: 14px;
+}
+
+.info_gehigarria {
+    margin-left: 20%;
+}
+
+.erosi {
+    margin-left: 15%;
+    padding: .375rem 3rem;
+    /* background-color: rgb(21, 65, 146);
+    color: white; */
+}
+
+.botoia:hover {
+    color: white;
+    background-color: rgb(255, 196, 81);
+}
+
+
+
+
+/* =========================*/
+/* payment_1.html */
+/* =========================*/
+
+.aukera_edukiontzia {
+    display: inline;
+}
+
+.itemsKontenedorea {
+    display: inline;
+    border: rgb(255, 196, 81) solid 1px;
+    border-radius: 6px;
+    margin-left: 2%;
+}
+
+
+.gehiKenItemBotoia {
+    font-size: 14px;
+}
+
+.gehiKenItemBotoia:hover {
+    color: white;
+    background-color: rgb(255, 196, 81);
+    padding-bottom: 1px;
+    padding-top: 2px;
+}

@@ -1,0 +1,5 @@
+[{"id":0, "izena":"Arkatza", "prezioa":0.5, "stock":100},
+ {"id":1, "izena":"Koadernoa", "prezioa":2.5, "stock":50},
+ {"id":2, "izena":"Karpeta", "prezioa":1.75, "stock":80},
+ {"id":3, "izena":"Ordenagailua", "prezioa":900.0, "stock":0},
+ {"id":4, "izena":"Boligrafoa", "prezioa":2.0, "stock":12}]
