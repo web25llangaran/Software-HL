@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -17,9 +18,18 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("MaltunaBrand"), 1500, 800);
+        scene = new Scene(loadFXML("MaltunaBrand"));
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
+
+        //Apparen windowsaren itxura aldatu. Hau satgen egin behar da ezin da Scene Builderen egin
+        //Logoa gehitu
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
+        //Leihoari izenburua jarri
+        stage.setTitle("Maltuna Brand - TxirbilDB");
+        //______________________________________________________________
+
     }
 
     public static void setRoot(String fxml) throws IOException {

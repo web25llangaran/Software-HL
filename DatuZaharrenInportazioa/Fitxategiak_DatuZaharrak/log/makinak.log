@@ -1,3 +1,7 @@
-2026-02-02T10:23:12.784993 INFO: Komunikazio kanala irekita dago.
-2026-02-02T10:23:12.786536300 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_makina,izena,deskribapena,potentzia(kw),instalazio data
-2026-02-02T10:23:12.832393800 ERROR: Errorea erabiltzailearen datuak sortzean: Duplicate entry '1' for key 'makina.PRIMARY' 
+2026-02-03T18:54:57.483105900 INFO: Komunikazio kanala irekita dago.
+2026-02-03T18:54:57.483105900 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: id_makina,izena,deskribapena,potentzia(kw),instalazio data
+2026-02-03T18:54:57.488108200 INFO: 2 Errenkada inportatua: 1,Torloju-pretsa,Metalezko piezak konprimitzeko makina,15,2023-05-12
+2026-02-03T18:54:57.491088300 INFO: 3 Errenkada inportatua: 2,Zulagailu industriala,Zulaketa sakonetarako makina automatikoa,5,2022-11-20
+2026-02-03T18:54:57.493543300 INFO: 4 Errenkada inportatua: 3,Soldadura robota,Doitasun handiko soldadura besoa,12,2024-01-15
+2026-02-03T18:54:57.493543300 INFO: Konexioa itxi da.
+2026-02-03T18:54:57.494564500 INFO: 3 errenkada inportatu dira!

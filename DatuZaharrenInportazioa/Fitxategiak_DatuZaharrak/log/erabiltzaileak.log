@@ -1,3 +1,12 @@
-2026-02-02T10:23:12.189886900 INFO: Komunikazio kanala irekita dago.
-2026-02-02T10:23:12.192887100 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: Id_erabiltzaileak,Izena,Abizena1,NAN,Helbidea,Posta Kodea,Email,Jaiotze data,Alta data
-2026-02-02T10:23:12.734789100 ERROR: Errorea erabiltzailearen datuak sortzean: Duplicate entry '1' for key 'erabiltzailea.PRIMARY' 
+2026-02-03T18:54:57.390503700 INFO: Komunikazio kanala irekita dago.
+2026-02-03T18:54:57.392503600 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da: Id_erabiltzaileak,Izena,Abizena1,NAN,Helbidea,Posta Kodea,Email,Jaiotze data,Alta data
+2026-02-03T18:54:57.441609 INFO: 2 Errenkada inportatua: 1,Jon,Garmendia,12345678A,Kale Nagusia 1,20001,jon@email.com,1990-05-15,2023-01-10
+2026-02-03T18:54:57.445610200 INFO: 3 Errenkada inportatua: 2,Ane,Agirre,87654321B,Zubia Kalea 4,48002,ane@email.com,1985-11-20,2023-02-14
+2026-02-03T18:54:57.447609800 INFO: 4 Errenkada inportatua: 3,Mikel,Lasa,11223344C,Foru Plaza 12,20005,mikel@email.com,1998-03-30,2023-05-22
+2026-02-03T18:54:57.451628400 INFO: 5 Errenkada inportatua: 4,Carlos,Rodriguez,44556677D,Urbieta Kalea 15,20006,carlos.rod@email.com,1992-08-12,2023-06-01
+2026-02-03T18:54:57.454653700 INFO: 6 Errenkada inportatua: 5,Lucia,Garcia,55667788E,Gran Via 22,48001,lucia.garcia@email.com,1988-01-25,2023-06-15
+2026-02-03T18:54:57.457099700 INFO: 7 Errenkada inportatua: 6,Iñigo,Fernandez,99887766F,Easo Kalea 3,20010,inigo.fer@email.com,2000-12-05,2023-07-10
+2026-02-03T18:54:57.459107200 INFO: 8 Errenkada inportatua: 7,Elena,Martinez,22334455G,Ledesma Kalea 7,48008,elena.mtz@email.com,1995-04-18,2023-08-20
+2026-02-03T18:54:57.462110600 INFO: 9 Errenkada inportatua: 8,Javier,Lopez,33445566H,San Martin 40,20005,javier.lopez@email.com,1982-09-30,2023-09-05
+2026-02-03T18:54:57.465123 INFO: Konexioa itxi da.
+2026-02-03T18:54:57.465123 INFO: 8 errenkada inportatu dira!

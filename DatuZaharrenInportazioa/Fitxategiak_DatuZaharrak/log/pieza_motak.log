@@ -1,3 +1,7 @@
-2026-02-02T10:23:12.949376800 INFO: Komunikazio kanala irekita dago.
-2026-02-02T10:23:12.950389300 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da:id_pieza_mota,izena
-2026-02-02T10:23:12.964906100 ERROR: Errorea pieza motaren datuak sortzean: Duplicate entry '1' for key 'pieza_mota.PRIMARY'
+2026-02-03T18:54:57.582067600 INFO: Komunikazio kanala irekita dago.
+2026-02-03T18:54:57.582067600 ERROR: 1 Arazoak eman ditu String to int castinarekin! Fitxategian irakurritako lerroa okerra da:id_pieza_mota,izena
+2026-02-03T18:54:57.586084500 INFO: 2 Errenkada inportatua: 1,Torlojuak
+2026-02-03T18:54:57.588066300 INFO: 3 Errenkada inportatua: 2,Engranajeak
+2026-02-03T18:54:57.589085600 INFO: 4 Errenkada inportatua: 3,Plakak
+2026-02-03T18:54:57.590090800 INFO: Konexioa itxi da.
+2026-02-03T18:54:57.591068800 INFO: 3 errenkada inportatu dira!
