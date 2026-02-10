@@ -1,0 +1,13 @@
+programa\model\piezaMota.class
+programa\ProbaKonexioa.class
+programa\controller\makinaController.class
+programa\model\pieza.class
+programa\model\makina.class
+programa\controller\MaltunaBrandController.class
+programa\model\erabiltzailea.class
+programa\model\makinaErabiltzailea.class
+module-info.class
+programa\controller\SecondaryController.class
+programa\App.class
+programa\DBKonexioa.class
+programa\controller\PrimaryController.class
