@@ -11,6 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -20,9 +23,12 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import programa.App;
 import programa.DBKonexioa;
 import programa.model.erabiltzailea;
 import programa.model.makina;
@@ -30,7 +36,55 @@ import programa.model.makinaErabiltzailea;
 import programa.model.pieza;
 import programa.model.piezaMota;
 
+
 public class MaltunaBrandController {
+
+    // ********************************************************************************************************************
+    //                                                      OROKORRA
+    // ********************************************************************************************************************    @FXML
+    private Button id_button_saioaHasi;
+    @FXML
+    void saioaHasi(ActionEvent event) {}
+
+     @FXML
+    private Button id_button_laguntza;
+    @FXML
+    void laguntza(ActionEvent event) {}
+
+    @FXML
+    private Button id_button_txirbilDBriBuruz;
+    @FXML
+    void txirbilDBriBuruz(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("TxirbilDB.fxml"));
+        Parent root = loader.load();       
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+
+        //Apparen windowsaren itxura aldatu. Hau satgen egin behar da ezin da Scene Builderen egin
+        //Logoa gehitu
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
+        //Leihoari izenburua jarri
+        stage.setTitle("Maltuna Brand - TxirbilDB");
+        //______________________________________________________________
+        stage.show();
+    }
+
+   
+    @FXML
+    private Button id_button_irten;
+    @FXML
+    void irten(ActionEvent event) throws IOException {
+        Stage stage = (Stage) id_button_irten.getScene().getWindow();
+        stage.close();
+    }
+    
+
+
+
+
+
 
     // ********************************************************************************************************************
     // MAKINA

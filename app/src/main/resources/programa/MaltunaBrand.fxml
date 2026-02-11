@@ -32,6 +32,20 @@
                                     <Image url="@Logoa/TxirbilDBBertikal.png" />
                                  </image>
                               </ImageView>
+                              <VBox alignment="TOP_CENTER" layoutY="4.0" prefHeight="626.0" prefWidth="186.0" spacing="15.0" styleClass="ezker_menua" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <Button fx:id="id_button_saioaHasi" mnemonicParsing="false" onAction="#saioaHasi" prefHeight="40.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Saioa hasi" />
+                                    <Button fx:id="id_button_laguntza" mnemonicParsing="false" onAction="#laguntza" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Laguntza" />
+                                    <Button fx:id="id_button_txirbilDBriBuruz" mnemonicParsing="false" onAction="#txirbilDBriBuruz" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="TxirbilDBri buruz" />
+                                    <Button fx:id="id_button_irten" layoutX="22.0" layoutY="151.0" mnemonicParsing="false" onAction="#irten" prefHeight="26.0" prefWidth="162.0" styleClass="ezker_menua_botoia" text="Irten" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </VBox>
                            </children>
                         </AnchorPane>
                     </content>
