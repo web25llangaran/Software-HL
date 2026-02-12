@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +24,7 @@ public class App extends Application {
 
         //Apparen windowsaren itxura aldatu. Hau satgen egin behar da ezin da Scene Builderen egin
         //Logoa gehitu
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
         //Leihoari izenburua jarri
         stage.setTitle("Maltuna Brand - TxirbilDB");
         //______________________________________________________________
