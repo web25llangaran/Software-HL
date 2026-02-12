@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="497.0" prefWidth="413.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.TxirbilDBController">
+<VBox alignment="CENTER" prefHeight="497.0" prefWidth="413.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.TxirbilDBController">
    <children>
       <ImageView fitHeight="289.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
          <image>

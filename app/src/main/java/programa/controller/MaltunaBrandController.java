@@ -23,7 +23,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -64,7 +63,7 @@ public class MaltunaBrandController {
 
         //Apparen windowsaren itxura aldatu. Hau satgen egin behar da ezin da Scene Builderen egin
         //Logoa gehitu
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
+        //stage.getIcons().add(new Image(getClass().getResourceAsStream("/programa/logoa/miguel-altuna-logo.png")));
         //Leihoari izenburua jarri
         stage.setTitle("Maltuna Brand - TxirbilDB");
         //______________________________________________________________
